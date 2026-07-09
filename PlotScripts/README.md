@@ -17,6 +17,19 @@ PlotScripts/
 └── README.md             # This guide
 ```
 
+## Geological Datasets
+
+The `PlotCratons.m` script (located in `Draft/FigX/`) explores various geological datasets that define craton boundaries and tectonic plates globally and regionally. The current available data includes:
+
+1. **Global Tectonics:**
+   - **Cratons:** `Data/global_tectonics/plates&provinces/shp/cratons.shp` (Currently active in plot)
+   - **Plate Boundaries:** `Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp` (Currently active in plot)
+2. **EarthByte Craton Boundaries:** `Data/EarthByte_Craton_Boundaries/Craton_Data/Craton_Boundaries.shp` (Commented out)
+3. **North America Physiographic Regions:** `Data/GeologicalData/north america/physio_shp/physio.shp` (Commented out)
+4. **Oceania Geological Regions:** `Data/GeologicalData/oceania/Geological_Regions_of_Australia.shp` (Commented out)
+5. **Africa Archean Blocks (CSV):** `Data/GeologicalData/Africa/Archean_Blocks/*.csv` (Multiple Archean blocks, commented out)
+6. **Africa Lekic Cratons (MAT):** `Data/GeologicalData/Africa/geoData/AfricaCratons_Lekic.mat` (Commented out)
+
 ## Important Note on Large Data Files
 
 > [!WARNING]
