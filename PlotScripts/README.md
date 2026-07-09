@@ -24,11 +24,14 @@ The `PlotCratons.m` script (located in `Draft/FigX/`) explores various geologica
 1. **Global Tectonics:**
    - **Cratons:** `Data/global_tectonics/plates&provinces/shp/cratons.shp` (Currently active in plot)
    - **Plate Boundaries:** `Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp` (Currently active in plot)
+   - *Reference: Hasterok, D., et al. (2022). New maps of global geologic provinces and tectonic plates. Earth-Science Reviews, 231, 104069. [DOI: 10.1016/j.earscirev.2022.104069](https://doi.org/10.1016/j.earscirev.2022.104069)*
 2. **EarthByte Craton Boundaries:** `Data/EarthByte_Craton_Boundaries/Craton_Data/Craton_Boundaries.shp` (Commented out)
+   - *Reference: Craton boundary detection from full-waveform tomography model reveals links to critical metal deposits. [DOI: 10.1016/j.gsf.2025.102176](https://doi.org/10.1016/j.gsf.2025.102176)*
 3. **North America Physiographic Regions:** `Data/GeologicalData/north america/physio_shp/physio.shp` (Commented out)
 4. **Oceania Geological Regions:** `Data/GeologicalData/oceania/Geological_Regions_of_Australia.shp` (Commented out)
 5. **Africa Archean Blocks (CSV):** `Data/GeologicalData/Africa/Archean_Blocks/*.csv` (Multiple Archean blocks, commented out)
 6. **Africa Lekic Cratons (MAT):** `Data/GeologicalData/Africa/geoData/AfricaCratons_Lekic.mat` (Commented out)
+   - *Reference: French, S. W., & Romanowicz, B. A. (or Lekic, V.) - Outlines based on global/regional tomography models.*
 
 ## Important Note on Large Data Files
 
