@@ -1,0 +1,331 @@
+clear;clc;
+%% 
+load(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/' ...
+    'GoGlobal/scripts/rf_prep_slurm_step_7/srtfista_output/south america/parameter_set_1/filtered_neg_sequenced_full.mat']);
+%%
+station_details = readtable('/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/station_metadata/global_station_catalog_df.csv');
+station_details = station_details(strcmp(station_details.continent,'South America'),:);
+station_details.net_sta = strcat(station_details.network_code, '-' ,station_details.station_code);
+station_filtered = station_details(ismember(station_details.net_sta, sequencedData.station),{'network_code','station_code','station_lat','station_lon','net_sta'});
+
+%%
+new_stns_metadata = '/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/station_metadata/SA_Extra.csv';
+new_stns_metadata = readtable(new_stns_metadata);
+
+new_sta_ref = '/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/rf_prep_slurm_step_7/srtfista_output/south america/parameter_set_1/south_am_lambda_list.csv';
+new_sta_ref = readtable(new_sta_ref);
+
+new_stns_metadata = new_stns_metadata(ismember(new_stns_metadata.Station, new_sta_ref.Station),{'Network','Station','Station_Lat','Station_Lon'});
+new_stns_metadata.Properties.VariableNames = {'network_code','station_code','station_lat','station_lon'};
+new_stns_metadata.net_sta = strcat(new_stns_metadata.network_code, '-' ,new_stns_metadata.station_code);
+
+station_filtered = [station_filtered; new_stns_metadata];
+
+%%
+all_stations = sequencedData.station;
+all_clusters = sequencedData.clusters;
+
+station_coord = zeros(length(all_stations),2);
+for iSta = 1 : length(all_stations)
+    sta = strtrim(all_stations(iSta,:));
+    sta_row = station_filtered(ismember(station_filtered.net_sta, sta),:);
+    sta_row = sta_row(1,:);
+    station_coord(iSta,1) = sta_row.station_lat;
+    station_coord(iSta,2) = sta_row.station_lon;
+end
+%%
+sa_tectonic_boundaries = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
+    'station_metadata/geological_data/south america/SA_Tectonic_Regions.csv']);
+
+amazonian_craton1 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_1'),:);
+amazonian_craton2 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_2'),:);
+andean_region = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Andean_region'),:);
+big_basin = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Big_Basin'),:);
+lv_craton = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'LV_Craton'),:);
+proto_1 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Proterozoic_Province_1'),:);
+proto_2 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Proterozoic_Province_2'),:);
+proto_3 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Proterozoic_Province_3'),:);
+sm_craton_1 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Small_Craton_1'),:);
+sm_craton_2 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Small_Craton_2'),:);
+sm_craton_3 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Small_Craton_3'),:);
+sm_craton_4 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Small_Craton_4'),:);
+sm_craton_5 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Small_Craton_5'),:);
+soafrans_craton = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Soafrans_Craton'),:);
+
+%%
+all_tectonic_regions = [amazonian_craton1; amazonian_craton2; andean_region; big_basin; ...
+    lv_craton; proto_1; proto_2; proto_3; sm_craton_1; sm_craton_2; ...
+    sm_craton_3; sm_craton_4; sm_craton_5; soafrans_craton];
+all_tectonic_regions(all_tectonic_regions.Region=="Amazonian_Craton_1","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Amazonian_Craton_2","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="LV_Craton","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Small_Craton_1","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Small_Craton_2","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Small_Craton_3","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Small_Craton_4","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Small_Craton_5","Region_Grouped") = {"Cratons"};
+all_tectonic_regions(all_tectonic_regions.Region=="Soafrans_Craton","Region_Grouped") = {"Cratons"};
+
+all_tectonic_regions(all_tectonic_regions.Region=="Proterozoic_Province_1","Region_Grouped") = {"Proterozoic Provinces"};
+all_tectonic_regions(all_tectonic_regions.Region=="Proterozoic_Province_2","Region_Grouped") = {"Proterozoic Provinces"};
+all_tectonic_regions(all_tectonic_regions.Region=="Proterozoic_Province_3","Region_Grouped") = {"Proterozoic Provinces"};
+
+all_tectonic_regions(all_tectonic_regions.Region=="Big_Basin","Region_Grouped") = {"Basin"};
+
+all_tectonic_regions(all_tectonic_regions.Region=="Andean_region","Region_Grouped") = {"Andean Region"};
+
+%%
+sa_andean_magnetic_arc = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
+    'station_metadata/geological_data/south america/SA_Andean_Mangetic_Arcs.csv']);
+
+mag_1 = sa_andean_magnetic_arc(strcmp(sa_andean_magnetic_arc.Region,'Active_Magnetic_Arc_1'),:);
+mag_2 = sa_andean_magnetic_arc(strcmp(sa_andean_magnetic_arc.Region,'Active_Magnetic_Arc_2'),:);
+mag_3 = sa_andean_magnetic_arc(strcmp(sa_andean_magnetic_arc.Region,'Active_Magnetic_Arc_3'),:);
+mag_4 = sa_andean_magnetic_arc(strcmp(sa_andean_magnetic_arc.Region,'Active_Magnetic_Arc_4'),:);
+
+all_mag = [mag_1; mag_2; mag_3; mag_4];
+all_uniq_mag_regions = unique(all_mag.Region);
+num_uniq_mag_regions = size(all_uniq_mag_regions,1);
+
+total_clusters = length(unique(all_clusters));
+mag_clust_cnt = zeros(1,total_clusters);
+mag_is_inside = zeros(length(all_stations),1);
+for i=1:num_uniq_mag_regions
+    T_sub = all_mag(strcmp(all_mag.Region, all_uniq_mag_regions{i}),:);
+    geo_shape = polyshape(T_sub.Latitude,T_sub.Longitude);
+    is_inside_temp = isinterior(geo_shape,station_coord(:,1),station_coord(:,2));
+    mag_is_inside = is_inside_temp + mag_is_inside;
+end
+matching_clusters_mag_idx = find(mag_is_inside>=1);
+matching_clusters_mag = all_clusters(matching_clusters_mag_idx);
+[clus_cnt_mag,clus_mag] = groupcounts(matching_clusters_mag);
+mag_clust_cnt(1,clus_mag) = clus_cnt_mag;
+
+
+%%
+unq_tectonic_region_grp = unique(all_tectonic_regions.Region_Grouped);
+tot_tectonic_region_grp = length(unq_tectonic_region_grp);
+
+total_clusters = length(unique(all_clusters));
+cluster_cnt = zeros(tot_tectonic_region_grp,total_clusters);
+
+for j=1:tot_tectonic_region_grp
+    T = all_tectonic_regions(strcmp(all_tectonic_regions.Region_Grouped, unq_tectonic_region_grp{j}),:);
+    all_unq_tectonic_regions = unique(T.Region);
+    num_unq_tectonic_regions = size(all_unq_tectonic_regions,1);
+    is_inside = zeros(length(all_stations),1);
+    for i=1:num_unq_tectonic_regions
+        T_sub = T(strcmp(T.Region, all_unq_tectonic_regions{i}),:);
+        geo_shape = polyshape(T_sub.Latitude,T_sub.Longitude);
+        is_inside_temp = isinterior(geo_shape,station_coord(:,1),station_coord(:,2));
+        is_inside = is_inside_temp + is_inside;
+    end
+    matching_clusters_idx = find(is_inside>=1);
+    matching_clusters = all_clusters(matching_clusters_idx);
+    [clus_cnt,clus] = groupcounts(matching_clusters);
+    cluster_cnt(j,clus) = clus_cnt;
+end
+
+%%
+figure(101);clf(101);
+ax1=subplot(6,7,[3:7:42, 7:7:42]);
+
+m_proj('miller','lon',[-90 -30],'lat',[-60 20]); 
+m_grid('linestyle','none','tickdir','out','linewidth',3);
+%m_line([L1.Lon], [L1.Lat], 'color',[0 0 0 0.5],'linewi',2);
+
+m_hatch(amazonian_craton1.Longitude,amazonian_craton1.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(amazonian_craton1.Longitude,amazonian_craton1.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(amazonian_craton2.Longitude,amazonian_craton2.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(amazonian_craton2.Longitude,amazonian_craton2.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(sm_craton_1.Longitude,sm_craton_1.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(sm_craton_1.Longitude,sm_craton_1.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(sm_craton_2.Longitude,sm_craton_2.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(sm_craton_2.Longitude,sm_craton_2.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(sm_craton_3.Longitude,sm_craton_3.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(sm_craton_3.Longitude,sm_craton_3.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(sm_craton_4.Longitude,sm_craton_4.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(sm_craton_4.Longitude,sm_craton_4.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(sm_craton_5.Longitude,sm_craton_5.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(sm_craton_5.Longitude,sm_craton_5.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(soafrans_craton.Longitude,soafrans_craton.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(soafrans_craton.Longitude,soafrans_craton.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(lv_craton.Longitude,lv_craton.Latitude, 'single',1,0.01,'color',[0.012, 0.576, 0.871 0.5]);
+m_line(lv_craton.Longitude,lv_craton.Latitude, 'color',[0 0 0],'linewi',1);
+
+m_hatch(andean_region.Longitude,andean_region.Latitude, 'single',1,0.01,'color',[0.941, 0.608, 0.624 0.5]);
+m_line(andean_region.Longitude,andean_region.Latitude, 'color',[0 0 0],'linewi',1);
+
+m_hatch(big_basin.Longitude,big_basin.Latitude, 'single',1,0.01,'color',[0.729, 0.702, 0.839 0.5]);
+m_line(big_basin.Longitude,big_basin.Latitude, 'color',[0 0 0],'linewi',1);
+
+m_hatch(proto_1.Longitude,proto_1.Latitude, 'single',1,0.01,'color',[0.463, 0.78, 0.941 0.2]);
+m_line(proto_1.Longitude,proto_1.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(proto_2.Longitude,proto_2.Latitude, 'single',1,0.01,'color',[0.463, 0.78, 0.941 0.2]);
+m_line(proto_2.Longitude,proto_2.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(proto_3.Longitude,proto_3.Latitude, 'single',1,0.01,'color',[0.463, 0.78, 0.941 0.2]);
+m_line(proto_3.Longitude,proto_3.Latitude, 'color',[0 0 0],'linewi',1);
+
+m_hatch(mag_1.Longitude,mag_1.Latitude, 'single',1,0.01,'color',[0.859, 0.141, 0.118 0.2]);
+m_line(mag_1.Longitude,mag_1.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(mag_2.Longitude,mag_2.Latitude, 'single',1,0.01,'color',[0.859, 0.141, 0.118 0.2]);
+m_line(mag_2.Longitude,mag_2.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(mag_3.Longitude,mag_3.Latitude, 'single',1,0.01,'color',[0.859, 0.141, 0.118 0.2]);
+m_line(mag_3.Longitude,mag_3.Latitude, 'color',[0 0 0],'linewi',1);
+m_hatch(mag_4.Longitude,mag_4.Latitude, 'single',1,0.01,'color',[0.859, 0.141, 0.118 0.2]);
+m_line(mag_4.Longitude,mag_4.Latitude, 'color',[0 0 0],'linewi',1);
+
+
+hold on;
+%Plot the Stations As per Cluster Color
+for iSta = 1 : length(sequencedData.station)
+    sta = strtrim(sequencedData.station(iSta,:));
+    sta_row = station_filtered(ismember(station_filtered.net_sta, sta),:);
+    lat = sta_row(1,:).station_lat;
+    lon = sta_row(1,:).station_lon;
+    cluster = sequencedData.clusters(iSta);
+    
+    switch cluster
+        case 1        
+            m_plot(lon, lat, 'marker','^', 'color','k','linewi',1,...
+                'linest','none','markersize',10,'markerfacecolor',[0.957 0 0]);
+            m_text(lon,lat,sta,'Fontsize',7, 'FontWeight','bold');
+        case 2
+            m_plot(lon, lat, 'marker','^', 'color','k','linewi',1,...
+                'linest','none','markersize',10,'markerfacecolor',[0.988 0.996 0]);
+            m_text(lon,lat,sta,'Fontsize',7, 'FontWeight','bold');
+        case 3
+            m_plot(lon, lat, 'marker','^', 'color','k','linewi',1,...
+                'linest','none','markersize',10,'markerfacecolor',[0.678 0 0.867]);
+            m_text(lon,lat,sta,'Fontsize',7, 'FontWeight','bold');
+        case 4
+            m_plot(lon, lat, 'marker','^', 'color','k','linewi',1,...
+                'linest','none','markersize',10,'markerfacecolor',[0.341 0.086 0.078]);
+            m_text(lon,lat,sta,'Fontsize',7, 'FontWeight','bold');
+    end
+    hold on
+end
+%% Plot Extra Sations
+% for i=1:size(new_stns_metadata,1)
+%     m_plot([new_stns_metadata(i,:).Lon],[new_stns_metadata(i,:).Lat],'bo');
+%     m_text([new_stns_metadata(i,:).Lon],[new_stns_metadata(i,:).Lat],[new_stns_metadata(i,:).Lon], ...
+%         [new_stns_metadata(i,:).Station],'Fontsize',7, 'FontWeight','bold');
+% end
+% hold on
+
+%% Plot Legends & Information Box
+totSta = length(sequencedData.clusters);
+colors = {[0.957 0 0], [0.988 0.996 0], [0.678 0 0.867], [0.341 0.086 0.078]};
+ax2=axes('position',[0.65,0.15,0.17,0.1],'Color','None','Visible','off');
+rectangle('position',[0,0,1,1],'FaceColor','white');
+for i = 1:size(cluster_cnt,2)
+    staPercnt = num2str((sum(ismember(sequencedData.clusters,i))/totSta)*100, '%.1f');
+    x = 0.03; y = 1.08 - i * 0.24;   
+    width = 0.1; height = 0.08;   
+    rectangle('Position', [x, y, width, height], 'FaceColor', colors{i});
+    mean_traces = -1.*sequencedData.meantraces(:,i); %remove negative sign for positive filtered data
+    [~,idx]=max(mean_traces); max_depth = sequencedData.time_vector(idx)*10;
+    text(x + width + 0.01, y + height / 2, ['N',num2str(i),': ',staPercnt,'%; Avg Depth: ' num2str(max_depth,'%.2f'), 'km'], 'VerticalAlignment', 'middle','Fontsize',7, 'FontWeight','bold');
+end
+
+ax3=axes('position',[0.65,0.82,0.15,0.085],'Color','None','Visible','off');
+rectangle('position',[0,0,1,1],'FaceColor','white');
+color_tec_regions = {[0.941, 0.608, 0.624],[0.729, 0.702, 0.839],[0.012, 0.576, 0.871],[0.463, 0.78, 0.941]};
+tec_regions = unq_tectonic_region_grp;
+for i = 1:4
+    x = 0.03; y = 1.08 - i * 0.24;   
+    width = 0.1; height = 0.08;   
+    rectangle('Position', [x, y, width, height], 'FaceColor', color_tec_regions{i});
+    text(x + width + 0.01, y + height / 2, tec_regions{i}, 'VerticalAlignment', 'middle','Fontsize',7, 'FontWeight','bold');
+end
+hold on
+
+%% Plot the Mean Traces
+ax3=subplot(6,7,[1:7:15, 2:7:16]);hold on;
+verticalSpacing = 0.5;
+plotOrder = [1,2,3,4];
+t=sequencedData.time_vector;
+for i = 1:length(plotOrder)
+    clusterNum = plotOrder(i);
+    meanTrace = sequencedData.meantraces(:,clusterNum)'; % Extract the mean stack for the current cluster
+    
+    % Offset each mean stack plot vertically
+    % The order of mean stack is determined by their position in plotOrder
+    offsetMeanTrace = meanTrace + (find(plotOrder == clusterNum) - 1) * verticalSpacing;
+
+    % Define the zero line for jbfill with the same offset
+    zeroLine = (find(plotOrder == clusterNum) - 1) * verticalSpacing * ones(size(meanTrace));
+
+    % Plot each mean stack with jbfill
+    plot(t.*10, offsetMeanTrace, 'k', 'LineWidth', 1.2);
+    fillpart = offsetMeanTrace < 0;             %change here
+    jbfill(t.*10, offsetMeanTrace, zeroLine, [0.957 0 0], 'none', 0.2, 1);  %change here
+
+    hold on
+end
+
+xlabel('Depth (km)','FontWeight','bold');
+xlim([60 350]); 
+ylim([-0.4, (length(plotOrder) - 1) * verticalSpacing + 0.4]); % Adjust Y-axis limits based on the number of clusters and spacing
+yticks;
+yticklabels({'\bf \color[rgb]{0.957 0 0} N1','\bf \color[rgb]{0.988 0.996 0} N2','\bf \color[rgb]{0.678 0 0.867} N3','\bf \color[rgb]{0.341 0.086 0.078} N4'});
+rectangle('Position', [x, y, width, height], 'FaceColor', colors{i});
+camroll(270)
+
+%% Plot the Bar
+ax3=subplot(6,7,[22:7:36, 23:7:37]);hold on;
+bh = barh(cluster_cnt,'BarWidth',0.9);
+bh(1).FaceColor=[0.957 0 0];bh(2).FaceColor=[0.988 0.996 0];bh(3).FaceColor=[0.678 0 0.867];bh(4).FaceColor=[0.341 0.086 0.078];
+xlim([0 20])
+legend({'N1','N2','N3','N4'}, 'Location','best','FontWeight','normal');
+set(gca,'YTick',[], 'YTickLabel',[]);
+set(gca,'XTick',[],'XTickLabel',[]);
+
+for i=1:size(cluster_cnt,2)
+    bhxtips = bh(i).XEndPoints-0.09;
+    bhytips = bh(i).YEndPoints+0.53;
+    bhlabels = string(bh(i).YData);
+    text(bhytips,bhxtips,bhlabels,'HorizontalAlignment','left',...
+        'VerticalAlignment','bottom','FontWeight','bold','FontSize',8);
+end
+
+colormap([[0.875 0.741 0.145]; [0.992 1 0.576]; [0.659 0.125 0.114]; [0.722, 0.843, 0.447]]);
+cb_bar = colorbar;
+cb_bar.Position = [0.11    0.11    0.0138    0.3876];
+cb_bar.Ticks=linspace(0.15,0.85,4); cb_bar.TickLabels = tec_regions;
+cb_bar.FontWeight="bold";
+cb_bar.FontSize=8;
+
+%%
+x0=474;
+y0=124;
+width=1279;
+height=984;
+set(gcf,'position',[x0,y0,width,height]);
+
+%%
+figure(102);clf(102);
+bh = barh(mag_clust_cnt,'BarWidth',0.9);
+bh(1).FaceColor=[0.957 0 0];bh(2).FaceColor=[0.988 0.996 0];bh(3).FaceColor=[0.678 0 0.867];bh(4).FaceColor=[0.341 0.086 0.078];
+xlim([0 20])
+legend({'N1','N2','N3','N4'}, 'Location','best','FontWeight','normal');
+set(gca,'YTick',[], 'YTickLabel',[]);
+set(gca,'XTick',[],'XTickLabel',[]);
+
+for i=1:size(mag_clust_cnt,2)
+    bhxtips = bh(i).XEndPoints-0.09;
+    bhytips = bh(i).YEndPoints+0.53;
+    bhlabels = string(bh(i).YData);
+    text(bhytips,bhxtips,bhlabels,'HorizontalAlignment','left',...
+        'VerticalAlignment','bottom','FontWeight','bold','FontSize',8);
+end
+
+colormap([[0.875 0.741 0.145]; [0.992 1 0.576]; [0.659 0.125 0.114]; [0.722, 0.843, 0.447]]);
+cb_bar = colorbar;
+cb_bar.Position = [0.11    0.11    0.0138    0.3876];
+cb_bar.Ticks=linspace(0.15,0.85,4); cb_bar.TickLabels = tec_regions;
+cb_bar.FontWeight="bold";
+cb_bar.FontSize=8;
+
+
+
