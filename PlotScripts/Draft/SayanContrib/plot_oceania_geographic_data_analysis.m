@@ -18,9 +18,7 @@ L1 = S(levels == 1);
 
 
 %% Read the Oceania Geographic Details Table
-oce_geo = readgeotable(['/scratch/tolugboj_lab/Sayan_Swar_WS/' ...
-    'PythonEnv/Python_Notebooks/GoGlobal/scripts/station_metadata/' ...
-    'geological_data/oceania/Geological_Regions_of_Australia.geojson']);
+oce_geo = readgeotable(['../../Data/GeologicalData/oceania/Geological_Regions_of_Australia.geojson']);
 
 T=geotable2table(oce_geo,["lat","lon"]);
 T=T(T.feature~="GR_VOID",:);

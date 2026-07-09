@@ -19,9 +19,7 @@ station_details.net_sta = strcat(station_details.network_code, '-' ,station_deta
 station_filtered = station_details(ismember(station_details.net_sta, sequencedData.station),:);
 
 %Read the Oceania Geographic Details Table
-oce_geo = readgeotable(['/scratch/tolugboj_lab/Sayan_Swar_WS/' ...
-    'PythonEnv/Python_Notebooks/GoGlobal/scripts/station_metadata/' ...
-    'geological_data/oceania/Geological_Regions_of_Australia.geojson']);
+oce_geo = readgeotable(['../../Data/GeologicalData/oceania/Geological_Regions_of_Australia.geojson']);
 T = geotable2table(oce_geo,["lat","lon"]);
 T = T(T.feature~="GR_VOID",:);
 T(T.age_class=="Proterozoic to Mesozoic",:).age_class = "Palaeozoic to Mesozoic"; %fixing bad data

@@ -35,7 +35,7 @@ for iSta = 1 : length(all_stations)
 end
 %%
 sa_tectonic_boundaries = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
-    'station_metadata/geological_data/south america/SA_Tectonic_Regions.csv']);
+    '../../Data/GeologicalData/south america/SA_Tectonic_Regions.csv']);
 
 amazonian_craton1 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_1'),:);
 amazonian_craton2 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_2'),:);
@@ -76,7 +76,7 @@ all_tectonic_regions(all_tectonic_regions.Region=="Andean_region","Region_Groupe
 
 %%
 sa_andean_magnetic_arc = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
-    'station_metadata/geological_data/south america/SA_Andean_Mangetic_Arcs.csv']);
+    '../../Data/GeologicalData/south america/SA_Andean_Mangetic_Arcs.csv']);
 % 
 mag_1 = sa_andean_magnetic_arc(strcmp(sa_andean_magnetic_arc.Region,'Active_Magnetic_Arc_1'),:);
 mag_2 = sa_andean_magnetic_arc(strcmp(sa_andean_magnetic_arc.Region,'Active_Magnetic_Arc_2'),:);

@@ -1,7 +1,7 @@
 %%
 clc;
 sa_coastline = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
-    'station_metadata/geological_data/south america/SA_Coastline.csv']);
+    '../../Data/GeologicalData/south america/SA_Coastline.csv']);
 sa_coast_lat = sa_coastline.Latitude;
 sa_coast_lon = sa_coastline.Longitude;
 coastline = polyshape(sa_coast_lon,sa_coast_lat);

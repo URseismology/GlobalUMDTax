@@ -36,7 +36,7 @@ for iSta = 1 : length(all_stations)
 end
 %%
 sa_tectonic_boundaries = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
-    'station_metadata/geological_data/south america/SA_Tectonic_Regions.csv']);
+    '../../Data/GeologicalData/south america/SA_Tectonic_Regions.csv']);
 
 amazonian_craton1 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_1'),:);
 amazonian_craton2 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_2'),:);

@@ -2,7 +2,7 @@ clear;clc;
 
 %%
 sa_coastline = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
-    'station_metadata/geological_data/south america/SA_Coastline.csv']);
+    '../../Data/GeologicalData/south america/SA_Coastline.csv']);
 sa_coast_lat = sa_coastline.Latitude;
 sa_coast_lon = sa_coastline.Longitude;
 coastline = polyshape(sa_coast_lon,sa_coast_lat);
@@ -71,7 +71,7 @@ end
 
 %%
 sa_tectonic_boundaries = readtable(['/scratch/tolugboj_lab/Sayan_Swar_WS/PythonEnv/Python_Notebooks/GoGlobal/scripts/' ...
-    'station_metadata/geological_data/south america/SA_Tectonic_Regions.csv']);
+    '../../Data/GeologicalData/south america/SA_Tectonic_Regions.csv']);
 
 amazonian_craton1 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_1'),:);
 amazonian_craton2 = sa_tectonic_boundaries(strcmp(sa_tectonic_boundaries.Region,'Amazonian_Craton_2'),:);
