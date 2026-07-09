@@ -1,0 +1,677 @@
+StationName,Continent,Latitude,Longitude,Hypothesis
+JP_JSD,asia,38,138.3,Mt
+B08A,north america,48.4,-119.3,Mt
+MY_SBM,asia,2.5,112.2,Mt
+DOSE,north america,47.7,-123,Mt
+Q12A,north america,39,-114.8,Mt
+I12A,north america,43.8,-115.1,Mt
+R06C,north america,38.5,-119.5,Mt
+F05A,north america,45.9,-121.5,Mt
+N14A,north america,40.9,-113.2,Mt
+MUR,north america,33.6,-117.2,Mt
+IRON,north america,43.4,-118.5,Mt
+M18A,north america,41.4,-110.1,Mt
+X18A,north america,34.5,-110,Mt
+J08A,north america,43.4,-118.5,Mt
+MY_KOM,asia,1.8,103.8,Mt
+R18A,north america,38.4,-109.9,Mt
+X20A,north america,34.5,-108.5,Mt
+HLID,north america,43.6,-114.4,Mt
+V14A,north america,35.6,-113.1,Mt
+BAR,north america,32.7,-116.7,Mt
+O01C,north america,40.1,-123.8,Mt
+Q22A,north america,38.9,-106.9,Mt
+BABR,north america,44.6,-123.8,Mt
+H09A,north america,44.7,-117.7,Mt
+TM_SRDT,asia,14.4,99.1,Mt
+CB_XLT,asia,43.9,116.1,Mt
+219A,north america,32,-109.3,Mt
+MONP,north america,32.9,-116.4,Mt
+628A,north america,29.5,-102.9,Mt
+E13A,north america,46.4,-114.2,Mt
+O17A,north america,40.2,-110.7,Mt
+S1-AUKSC,oceania,-38,145.2,Mt
+G09A,north america,45.3,-117.8,Mt
+D05A,north america,47.2,-122,Mt
+X21A,north america,34.4,-107.8,Mt
+G15A,north america,45.2,-112.5,Mt
+TASL,north america,34.9,-106.5,Mt
+GT-PLCA,south america,-40.7,-70.6,Mt
+KO_MDUB,asia,40.5,31.2,Mt
+Z22A,north america,33.3,-107,Mt
+E03A,north america,46.5,-123.6,Mt
+OSI,north america,34.6,-118.7,Mt
+MN_DIVS,europe,44.1,20,Mt
+XW_KAI,asia,41.6,75,Mt
+LEBA,north america,46.5,-123.6,Mt
+S1-AUPHS,oceania,-31.1,150.9,Mt
+DLMT,north america,45.4,-112.6,Mt
+CB_CN2,asia,43.5,125.3,Mt
+320A,north america,31.3,-108.5,Mt
+C09A,north america,47.8,-118.3,Mt
+G-COYC,south america,-45.6,-72.1,Mt
+WIZ,north america,42.9,-122.1,Mt
+214A,north america,32,-112.8,Mt
+AU-TV1H,oceania,-19.3,146.8,Mt
+CB_HHC,asia,40.8,111.6,Mt
+GE_EIL,asia,29.7,35,Mt
+AU-RK1H,oceania,-23.4,150.5,Mt
+TM_PBKT,asia,16.6,101,Mt
+S1-AUHPC,oceania,-38.1,142.3,Mt
+NEE2,north america,34.8,-114.6,Mt
+TTW,north america,47.7,-121.7,Mt
+O16A,north america,40.2,-111.5,Mt
+VTV,north america,34.6,-117.3,Mt
+IU_PAB,europe,39.5,-4.3,Mt
+II-TAU,oceania,-42.9,147.3,Mt
+X19A,north america,34.4,-109.3,Mt
+S1-AULHS,oceania,-41.3,147.2,Mt
+G_SSB,europe,45.3,4.5,Mt
+RM_DLV,asia,12,108.5,Mt
+CB_NJ2,asia,32.1,118.9,Mt
+CCRK,north america,46.6,-119.9,Mt
+GSC,north america,35.3,-116.8,Mt
+X15A,north america,34.5,-112.2,Mt
+MPP,north america,34.9,-119.8,Mt
+CWC,north america,36.4,-118.1,Mt
+V15A,north america,35.8,-112.2,Mt
+GE_KSDI,asia,33.2,35.7,Mt
+B09A,north america,48.4,-118.1,Mt
+GLA,north america,33.1,-114.8,Mt
+224A,north america,32.1,-105.5,Mt
+109C,north america,32.9,-117.1,Mt
+S1-AUNRC,oceania,-23.4,150.5,Mt
+IU_YSS,asia,47,142.8,Mt
+MY_LDM,asia,5.2,118.5,Mt
+S1-AUTOO,oceania,-27.5,152,Mt
+IU-OTAV,south america,0.2,-78.5,Mt
+IU_MA2,asia,59.6,150.8,Mt
+TW_TWGB,asia,22.8,121.1,Mt
+K11A,north america,42.8,-116,Mt
+S1-AUMTC,oceania,-37.6,143.9,Mt
+J10A,north america,43.4,-116.8,Mt
+T22A,north america,37,-106.9,Mt
+NEW,north america,48.3,-117.1,Mt
+DGR,north america,33.7,-117,Mt
+AU-CTA,oceania,-20.1,146.2,Mt
+O11A,north america,40.1,-115.7,Mt
+AU-TV2S,oceania,-19.3,146.8,Mt
+Y18A,north america,33.8,-110,Mt
+PS_BAG,asia,16.4,120.6,Mt
+Z21A,north america,33.3,-107.7,Mt
+AU-ARMA,oceania,-30.4,151.6,Mt
+H03A,north america,44.7,-123.3,Mt
+218A,north america,32,-110,Mt
+TASN,north america,34.9,-106.5,Mt
+U17A,north america,36.6,-110.7,Mt
+H04A,north america,44.7,-122.2,Mt
+LKL,north america,34.6,-117.8,Mt
+S09A,north america,37.7,-117.2,Mt
+U14A,north america,36.4,-113.2,Mt
+HEC,north america,34.8,-116.3,Mt
+S04C,north america,37.5,-121.3,Mt
+N08A,north america,40.8,-118.1,Mt
+216A,north america,32,-111.5,Mt
+H15A,north america,44.6,-112.6,Mt
+V18A,north america,35.7,-109.9,Mt
+U12A,north america,36.4,-114.5,Mt
+PM29,Africa,32.0844,-4.3913,Mt
+PM28,Africa,32.231701,-4.6171,Mt
+EITE,Africa,15.2359,38.777901,Mt
+KEG,Africa,29.9275,31.8292,Mt
+ADYE,Africa,13.635,38.981098,Mt
+CAYE,Africa,14.86198,39.305069,Mt
+LALE,Africa,12.0258,39.037498,Mt
+ELLE,Africa,11.2579,40.378399,Mt
+FURI,Africa,8.8952,38.6798,Mt
+KMBO,Africa,-1.1271,37.2525,Mt
+DESE,Africa,11.118,39.634998,Mt
+MISE,Africa,9.23691,40.759102,Mt
+TIOE,Africa,14.6651,40.8666,Mt
+SEHE,Africa,12.0401,40.976898,Mt
+AAUS,Africa,9.0349,38.766499,Mt
+HYNE,Africa,9.31476,42.096199,Mt
+SEKE,Africa,12.6217,39.033401,Mt
+QATE,Africa,9.3753,41.469101,Mt
+MDT,Africa,32.817,-4.614,Mt
+PM37,Africa,34.950699,-3.1506,Mt
+PM13,Africa,34.672298,-4.9354,Mt
+PM02,Africa,35.6101,-5.3471,Mt
+PM36,Africa,34.8894,-3.7359,Mt
+PM38,Africa,34.838501,-2.8737,Mt
+PM23,Africa,33.127998,-5.03,Mt
+PM22B,Africa,33.307899,-5.1024,Mt
+034A,north america,27.1,-98.7,T
+135A,north america,32.6,-97.4,T
+150A,north america,32.6,-86,T
+1G_SA57,europe,62.4,14.9,T
+237B,north america,32,-95.8,T
+244A,north america,32,-90.7,T
+328A,north america,31.4,-102.8,T
+349A,north america,31.4,-87.2,T
+434A,north america,30.8,-98.3,T
+435B,north america,30.8,-97.6,T
+444A,north america,30.7,-90.7,T
+449A,north america,30.8,-87.2,T
+450A,north america,30.8,-86.6,T
+456A,north america,30.7,-82,T
+735B,north america,28.9,-97.8,T
+736A,north america,29,-97.1,T
+ABPO,Africa,-19.018,47.229,T
+AU-INKA,oceania,-27.7,140.7,T
+AU-KLBR,oceania,-31.6,117.8,T
+AU-RKGY,oceania,-34.6,117,T
+AU-WB2,oceania,-19.9,134.4,T
+B06OR,Africa,-19.9011,23.526899,T
+B14MH,Africa,-18.295,21.7918,T
+BATG,Africa,-18.878599,46.187099,T
+BGCA,Africa,5.17636,18.424219,T
+BR-PRPB,south america,-6.2,-49.8,T
+BROLN,Africa,-21.09967,27.33424,T
+C24A,north america,47.5,-104.4,T
+CB_LZH,asia,36.1,103.8,T
+CB_NAQ,asia,32.2,92.2,T
+CM-SMAR,south america,11.2,-74.2,T
+CM24,Africa,6.523,14.288,T
+COWI,north america,46.1,-89.1,T
+D12,north america,34.2,-83,T
+D17,north america,34.6,-83.5,T
+DBIC,Africa,6.67016,-4.85656,T
+E62A,north america,46.6,-69.5,T
+E63A,north america,46.4,-68.5,T
+EDA,Africa,3.778868,10.153427,T
+F39A,north america,45.9,-90.9,T
+F40A,north america,45.9,-90.1,T
+F63A,north america,45.7,-69.1,T
+FOMA,Africa,-24.97565,46.978877,T
+G-PEL,south america,-33.1,-70.7,T
+G43A,north america,45.3,-87.7,T
+GB_CWF,europe,52.7,-1.3,T
+GB_WLF1,europe,53.3,-4.4,T
+H63A,north america,44.7,-70,T
+H65A,north america,44.7,-68.2,T
+HE_KIF,europe,69,20.8,T
+I29A,north america,44,-100.3,T
+I31A,north america,44,-98.5,T
+I42A,north america,43.9,-88.9,T
+I53A,north america,43.8,-79.6,T
+I63A,north america,44.1,-70.6,T
+I64A,north america,43.9,-69.6,T
+IC_HIA,asia,49.3,119.7,T
+IC_KMI,asia,25.1,102.7,T
+II_AAK,asia,42.6,74.5,T
+II_ARU,europe,56.4,58.6,T
+IU-PTGA,south america,-0.7,-60,T
+IU-SDV,south america,8.9,-70.6,T
+IU_ULN,asia,47.9,107.1,T
+J40A,north america,43.4,-90.7,T
+J41A,north america,43.4,-90,T
+JFWS,north america,42.9,-90.2,T
+K18A,north america,42.6,-110,T
+K30B,north america,42.7,-99.6,T
+K37A,north america,42.8,-93.6,T
+K49A,north america,42.8,-83.5,T
+KJ40,north america,37.1,-86,T
+KN_TKM2,asia,42.9,75.6,T
+KOWA,Africa,14.4967,-4.014,T
+KR_ARSB,asia,41.3,73,T
+KR_BOOM,asia,42.5,75.9,T
+KR_MNAS,asia,42.5,72.5,T
+KZ_ABKAR,asia,49.3,59.9,T
+KZ_AKTO,asia,50.4,58,T
+KZ_MAK,asia,46.8,82,T
+KZ_TLG,asia,43.2,77.2,T
+L42A,north america,42,-89.7,T
+L47A,north america,42,-85.2,T
+L48A,north america,41.9,-84.4,T
+L64A,north america,41.9,-70.8,T
+LBDL,north america,37.8,-77.6,T
+M27A,north america,41.5,-102.4,T
+M44A,north america,41.4,-88,T
+MBO,Africa,14.392024,-16.955467,T
+MMNY,north america,42.7,-77.9,T
+N20A,north america,40.8,-108.3,T
+N58A,north america,40.8,-76.7,T
+NC03,north america,35.5,-79.3,T
+NE210,Africa,-21.36191,21.215712,T
+NE212,Africa,-23.38039,24.660793,T
+O48B,north america,40.3,-85.2,T
+O49A,north america,40.2,-84.3,T
+O50A,north america,40.1,-83.6,T
+ON-NAN01,south america,-17.8,-40.1,T
+P32A,north america,39.6,-98.6,T
+PKME,north america,45.3,-69.3,T
+PL_BEL,europe,51.8,20.8,T
+PRNY,north america,42.5,-76.5,T
+PWET,Africa,-8.28,28.530001,T
+Q31A,north america,39,-99.4,T
+Q44A,north america,38.9,-89,T
+Q44B,north america,38.9,-89,T
+Q54A,north america,39,-80.8,T
+S1-AUDHS,oceania,-12.4,130.8,T
+S1-AULRC,oceania,-29.4,148,T
+S1-AURMK,oceania,-34.2,140.7,T
+S45A,north america,37.7,-88.6,T
+SHAI,Africa,5.88136,0.04389,T
+SKRH,Africa,-22.827,44.733002,T
+SOK,Africa,14.494418,-16.456223,T
+SUSI,north america,40.4,-83.2,T
+T38A,north america,37,-94.3,T
+TAM,Africa,22.79149,5.52838,T
+TUL1,north america,35.9,-95.8,T
+U26A,north america,36.4,-103.7,T
+V37A,north america,35.9,-95.1,T
+VBMS,north america,32.2,-90.5,T
+W07,north america,31.6,-83.9,T
+W11,north america,32,-83.9,T
+W21,north america,32.4,-83.9,T
+W23,north america,32.5,-83.9,T
+W32A,north america,35.1,-99.2,T
+WAND,Africa,-24.649982,19.743595,T
+WLFT,north america,38.2,-78.1,T
+WVNY,north america,42.4,-78.6,T
+X26A,north america,34.6,-103.8,T
+X36A,north america,34.6,-96.4,T
+X4_C10,asia,33.3,91.8,T
+X4_F14,asia,31.6,94.6,T
+X4_F16,asia,31.7,92.4,T
+XF_H0700,asia,29.1,85.4,T
+XW_KHA,asia,44.2,74,T
+Y29A,north america,33.9,-101.7,T
+Y2_GUGE,asia,31.5,79.7,T
+Y54A,north america,33.9,-82.7,T
+Z02PP,Africa,-12.6965,30.135799,T
+Z10KW,Africa,-13.4991,32.382801,T
+Z35A,north america,33.3,-97.3,T
+Z36A,north america,33.3,-96.4,T
+Z37A,north america,33.2,-95.6,T
+Z51A,north america,33.3,-85.2,T
+IC_XAN,asia,34,108.9,M-C
+PAL,north america,41,-73.9,M-C
+AU-PSA00,oceania,-21.6,119.8,M-C
+H24A,north america,44.7,-104.6,M-C
+O34A,north america,40.2,-96.7,M-C
+E16A,north america,46.5,-111.7,M-C
+D17A,north america,47.2,-110.7,M-C
+GT-CPUP,south america,-26.3,-57.3,M-C
+E15A,north america,46.4,-112.6,M-C
+BMNY,north america,44.8,-74.5,M-C
+B11A,north america,48.4,-116.4,M-C
+M21A,north america,41.6,-107.4,M-C
+HCNY,north america,42.7,-74.4,M-C
+M33A,north america,41.6,-97.2,M-C
+KZ_PDGK,asia,43.3,79.5,M-C
+PANJ,north america,40.4,-74.7,M-C
+LONY,north america,44.6,-74.6,M-C
+L59A,north america,42.2,-75,M-C
+FOR,north america,40.9,-73.9,M-C
+D14A,north america,47.1,-113.5,M-C
+D54A,north america,47.2,-76.7,M-C
+S23A,north america,37.7,-106,M-C
+A11A,north america,49,-116.4,M-C
+X38A,north america,34.7,-94.8,M-C
+BRNY,north america,41.4,-74,M-C
+AU-KNRA,oceania,-15.7,128.8,M-C
+KZ_ZRNK,asia,53,69,M-C
+R26A,north america,38.3,-103.4,M-C
+R25A,north america,38.1,-104.3,M-C
+F13A,north america,45.8,-114.3,M-C
+G54A,north america,45.4,-78.1,M-C
+F25A,north america,45.9,-103.5,M-C
+GE_HALK,asia,6.1,80.7,M-C
+Q24A,north america,39,-105.1,M-C
+C13A,north america,47.7,-114.6,M-C
+R35A,north america,38.3,-96.2,M-C
+P23A,north america,39.4,-105.8,M-C
+P25A,north america,39.5,-104.2,M-C
+N24A,north america,40.8,-104.9,M-C
+HE_RAF,europe,61,21.8,M-C
+BL-CNLB,south america,-29.3,-50.9,M-C
+R24A,north america,38.2,-105.1,M-C
+XW_KDJ,asia,42.1,77.2,M-C
+XW_KENS,asia,42.3,79.2,M-C
+I55A,north america,44.2,-77.7,M-C
+G53A,north america,45.1,-78.6,M-C
+M24A,north america,41.5,-104.8,M-C
+S1-AUKAL,oceania,-30.8,121.5,M-C
+I23A,north america,44,-105.5,M-C
+D47A,north america,47.1,-83.1,M-C
+AU-HTT,oceania,-33.4,138.9,M-C
+C14A,north america,47.8,-113.7,M-C
+P60A,north america,39.8,-75.6,M-C
+Y12C,north america,33.8,-114.5,M-C
+XW_AKSU,asia,41.1,80.1,M-C
+H22A,north america,44.6,-106.4,M-C
+X4_F13,asia,31.2,95.9,M-C
+KR_DRK,asia,39.5,71.8,M-C
+HE_RMF,europe,64.2,29.9,M-C
+NCB,north america,44,-74.2,M-C
+E53A,north america,46.4,-77.7,M-C
+AU-AS31,oceania,-23.7,133.9,M-C
+AU-KMBL,oceania,-31.4,121.9,M-C
+WCNY,north america,44,-75.7,M-C
+II_TLY,asia,51.7,103.6,M-C
+D58A,north america,47.1,-72.9,M-C
+XR_BA01,asia,24.2,91.7,M-C
+P24A,north america,39.5,-104.9,M-C
+NPNY,north america,41.8,-74.1,M-C
+LBTB,Africa,-25.0151,25.59665,M-C
+HVD,Africa,-30.605,25.497,M-C
+BOSA,Africa,-28.6141,25.2555,M-C
+NE219,Africa,-22.56967,27.446815,M-C
+B1665,Africa,-22.8246,27.2286,M-C
+SA46,Africa,-24.838169,27.1092,M-C
+SA45,Africa,-24.879187,26.164375,M-C
+DODT,Africa,-6.186,35.748001,M-C
+KOMO,Africa,-3.8422,36.7192,M-C
+LIRA,Africa,2.1096,33.064301,M-C
+LN35,Africa,-2.6304,36.005901,M-C
+LN34,Africa,-2.751,36.0485,M-C
+KUMI,Africa,1.4769,33.864799,M-C
+GULU,Africa,2.8778,32.284801,M-C
+MAUS,Africa,-2.741,36.703999,M-C
+MBAR,Africa,-0.6019,30.7382,M-C
+PIGI,Africa,0.231,32.319,M-C
+NE220,Africa,-23.363029,25.859613,M-C
+LSZ,Africa,-15.2779,28.1882,M-C
+ZOMB,Africa,-15.3833,35.349998,M-C
+Q02GG,Africa,-13.2923,35.030399,M-C
+PM35,Africa,31.046301,-3.9958,M-C
+OTJO,Africa,-20.018,15.9799,M-C
+TSUM,Africa,-19.2022,17.5838,M-C
+BAHE,Africa,-21.3521,15.4405,M-C
+AU-FITZ,oceania,-18.1,125.6,M-C
+BL-AREB,south america,-21.4,-46.1,M-C
+BL-ITAB,south america,-27.2,-52.1,M-C
+BR-SGCB,south america,-0.1,-67,M-C
+CH_BRANT,europe,46.9,6.5,M-C
+CZ_KHC,europe,49.1,13.6,M-C
+D08A,north america,47.1,-118.9,M-C
+D52A,north america,47,-78.4,M-C
+D57A,north america,47,-73.9,M-C
+E47A,north america,46.5,-83.3,M-C
+E50A,north america,46.4,-80.7,M-C
+E52A,north america,46.3,-78.7,M-C
+F48A,north america,45.8,-82.6,M-C
+FN_SGF,europe,67.4,26.5,M-C
+FRNY,north america,44.8,-73.6,M-C
+G_HYB,asia,17.4,78.6,M-C
+H53A,north america,44.6,-78.6,M-C
+H55A,north america,44.6,-77.2,M-C
+HE_PVF,europe,60.5,25.9,M-C
+IC_ENH,asia,30.3,109.5,M-C
+II_BFO,europe,48.3,8.3,M-C
+II_PALK,asia,7.3,80.7,M-C
+IRM,north america,34.2,-115.1,M-C
+IU-MBWA,oceania,-21.2,119.7,M-C
+K58A,north america,42.8,-75.6,M-C
+KR_BTK,asia,40.1,70.8,M-C
+KR_PRZ,asia,42.5,78.4,M-C
+L61A,north america,42.2,-73.6,M-C
+LPHEP,Africa,-23.363029,25.859613,M-C
+M34A,north america,41.5,-96.6,M-C
+M35A,north america,41.5,-95.7,M-C
+M60A,north america,41.3,-74.6,M-C
+MCVT,north america,44,-73,M-C
+MN_TUE,europe,46.5,9.3,M-C
+MSO,north america,46.8,-113.9,M-C
+N25A,north america,40.8,-104.1,M-C
+N59A,north america,40.9,-75.8,M-C
+NL_HGN,europe,50.8,5.9,M-C
+O22A,north america,40.2,-106.5,M-C
+O36A,north america,40.1,-95,M-C
+TASO,north america,34.9,-106.5,M-C
+WUPA,north america,39.9,-75.6,M-C
+XW_ADEN,asia,12.8,45,M-C
+R45A,north america,38.3,-88.3,M-P
+F22A,north america,45.8,-106.3,M-P
+LRAL,north america,33,-87,M-P
+W08,north america,31.7,-83.9,M-P
+D63A,north america,47,-68.1,M-P
+U47A,north america,36.4,-87.3,M-P
+K36A,north america,42.6,-94.5,M-P
+U34A,north america,36.4,-97.5,M-P
+M55A,north america,41.5,-78.8,M-P
+N45A,north america,40.8,-87.5,M-P
+S49A,north america,37.8,-85.3,M-P
+S1-AUKAR,oceania,-20.8,116.8,M-P
+GE_VSU,europe,58.5,26.7,M-P
+P38B,north america,39.6,-93.5,M-P
+KR_ARK,asia,41.8,72,M-P
+Z44A,north america,33.3,-90.4,M-P
+A28A,north america,48.9,-100.3,M-P
+J52A,north america,43.2,-80.5,M-P
+F26A,north america,45.9,-102.7,M-P
+LADY,north america,38.5,-78.8,M-P
+L38A,north america,42.1,-93,M-P
+M26A,north america,41.5,-103.1,M-P
+V52A,north america,35.8,-83.6,M-P
+U32A,north america,36.4,-99,M-P
+H43A,north america,44.5,-87.8,M-P
+N39A,north america,40.9,-92.5,M-P
+BL-DIAM,south america,-18.3,-43.7,M-P
+P53A,north america,39.5,-81.4,M-P
+131A,north america,32.7,-100.4,M-P
+FOXP,north america,38.6,-79.2,M-P
+C37A,north america,47.7,-92.2,M-P
+E43A,north america,46.4,-87,M-P
+T35A,north america,36.9,-96.5,M-P
+D05,north america,33.8,-82.5,M-P
+J55A,north america,43.3,-77.8,M-P
+C27A,north america,47.7,-101.5,M-P
+C36A,north america,47.8,-92.8,M-P
+ALLY,north america,41.6,-80.1,M-P
+D26A,north america,47,-102.4,M-P
+D14,north america,34.4,-83.2,M-P
+W50A,north america,35.2,-85.3,M-P
+D25A,north america,47.2,-103.3,M-P
+SIUC,north america,37.7,-89.2,M-P
+PVGR,north america,39.6,-81.4,M-P
+O39A,north america,40.3,-92.5,M-P
+F33A,north america,45.8,-96.3,M-P
+M54A,north america,41.5,-79.7,M-P
+W52A,north america,35.1,-83.9,M-P
+G41A,north america,45.2,-89.2,M-P
+AU-MULG,oceania,-30.3,134.1,M-P
+M48A,north america,41.5,-84.7,M-P
+Q39A,north america,39,-93,M-P
+117A,north america,32.6,-110.7,U
+125A,north america,32.7,-104.7,U
+217A,north america,31.8,-110.8,U
+226B,north america,32.1,-104.2,U
+342B,north america,31.4,-92.3,U
+433A,north america,30.8,-99.1,U
+534A,north america,30,-98.5,U
+552A,north america,30.1,-85.3,U
+637A,north america,29.4,-96.3,U
+933A,north america,27.6,-99.3,U
+A16A,north america,48.9,-111.6,U
+AGMN,north america,48.3,-95.9,U
+AU-ARPS,oceania,-36.8,141.8,U
+AU-BBOO,oceania,-32.8,136.1,U
+AU-BW2S,oceania,-20,148.2,U
+AU-CMSA,oceania,-31.5,145.7,U
+AU-CN1H,oceania,-16.9,145.7,U
+AU-CNB,oceania,-35.3,149.4,U
+AU-COEN,oceania,-14,143.2,U
+AU-EIDS,oceania,-25.4,151.1,U
+AU-KDU,oceania,-12.7,132.5,U
+AU-LCRK,oceania,-30.4,138.2,U
+AU-MILA,oceania,-37.1,149.2,U
+AU-MOO,oceania,-42.4,147.2,U
+AU-MORW,oceania,-29.1,116,U
+AU-MTN,oceania,-12.8,131.1,U
+AU-MUN,oceania,-32,116.2,U
+AU-QLP,oceania,-26.6,144.2,U
+AU-STKA,oceania,-31.9,141.6,U
+AU-TOO,oceania,-37.6,145.5,U
+AU-YNG,oceania,-34.3,148.4,U
+BDM,north america,38,-121.9,U
+BL-AQDB,south america,-20.5,-55.7,U
+BL-CAUB,south america,-8.2,-36,U
+BL-ITRB,south america,-19.7,-50.4,U
+BL-PP1B,south america,-17.6,-54.9,U
+BNLO,north america,37.1,-122.2,U
+BR-JANB,south america,-15.1,-44.3,U
+BR-NPGB,south america,-7,-55.4,U
+BR-ROSB,south america,-2.9,-44.1,U
+BR-SDBA,south america,-12.4,-44.9,U
+BRYW,north america,41.9,-71.5,U
+C-GO01,south america,-19.7,-69.2,U
+C-GO09,south america,-51.3,-72.3,U
+C1-AC01,south america,-26.1,-70.6,U
+C1-CO02,south america,-31.2,-71,U
+C1-VA01,south america,-33,-71.6,U
+C1-VA03,south america,-32.8,-70.6,U
+C26A,north america,47.8,-102.1,U
+CB_CD2,asia,30.9,103.8,U
+CB_GYA,asia,26.5,106.7,U
+CB_GZH,asia,23.7,113.7,U
+CB_HEH,asia,50.3,127.4,U
+CM-HEL,south america,6.2,-75.5,U
+CM-SJC,south america,9.9,-75.2,U
+CM-URI,south america,11.7,-72,U
+COR,north america,44.6,-123.3,U
+CZ_DPC,europe,50.4,16.3,U
+D06A,north america,47.2,-120.8,U
+D09,north america,34,-82.8,U
+D62A,north america,47.1,-69.1,U
+DK_MUD,europe,56.5,9.2,U
+DWPF,north america,28.1,-81.4,U
+E64A,north america,46.4,-67.8,U
+ELK,north america,40.7,-115.2,U
+EMMW,north america,44.7,-67.5,U
+EYMN,north america,47.9,-91.5,U
+F19A,north america,45.9,-108.9,U
+F42A,north america,45.8,-88.1,U
+F64A,north america,45.9,-68.3,U
+G-CAN,oceania,-35.3,149,U
+G-KOG,south america,5.2,-52.7,U
+G-MPG,south america,5.1,-52.6,U
+G28A,north america,45.1,-100.9,U
+G61A,north america,45.3,-71.5,U
+G62A,north america,45.2,-70.5,U
+G64A,north america,45.3,-68.8,U
+G65A,north america,45.2,-67.6,U
+GE_CSS,asia,35,33.3,U
+GE_MHV,europe,55,37.8,U
+GE_TIRR,europe,44.5,28.4,U
+GE_UGM,asia,-7.9,110.5,U
+GGN,north america,45.1,-66.8,U
+G_CLF,europe,48,2.3,U
+H20A,north america,44.5,-108,U
+H41A,north america,44.6,-89.7,U
+H62A,north america,44.6,-71.2,U
+H66A,north america,44.8,-67.3,U
+HE_JOF,europe,62.9,31.3,U
+HL_ITM,europe,37.2,21.9,U
+HRV,north america,42.5,-71.6,U
+I04A,north america,43.8,-122.4,U
+I09A,north america,44,-117.7,U
+I10A,north america,44.1,-116.8,U
+IC_SSE,asia,31.1,121.2,U
+II-NNA,south america,-12,-76.8,U
+II_KIV,europe,44,42.7,U
+II_OBN,europe,55.1,36.6,U
+IU-RCBR,south america,-5.8,-35.9,U
+IU_BILL,asia,68.1,166.5,U
+IU_TATO,asia,25,121.5,U
+J57A,north america,43.4,-76,U
+J60A,north america,43.2,-73.4,U
+JCC,north america,40.8,-124,U
+JEDS,north america,43.8,-124,U
+JP_JSU,asia,31.5,130.5,U
+JRSC,north america,37.4,-122.2,U
+K14A,north america,42.5,-113.2,U
+K21A,north america,42.6,-107.3,U
+K47A,north america,42.7,-85,U
+K50A,north america,42.8,-82.6,U
+K63A,north america,42.7,-71.5,U
+KI41,north america,37.3,-85.8,U
+KI45,north america,37.3,-85.2,U
+KR_ARLS,asia,41.9,74.3,U
+KZ_OTUK,asia,48.2,72.3,U
+L10A,north america,42.1,-116.5,U
+L16A,north america,42,-111.4,U
+L21A,north america,42,-107.4,U
+L61B,north america,42.4,-72.7,U
+LOHW,north america,43.6,-110.6,U
+LRIV,north america,48.1,-123.5,U
+LSON,north america,45.4,-121.6,U
+LTX,north america,29.3,-103.7,U
+M14A,north america,41.5,-113.3,U
+M49A,north america,41.5,-84,U
+MCCM,north america,38.1,-122.9,U
+MNV,north america,38.4,-118.2,U
+MN_BNI,europe,45.1,6.7,U
+MN_CEL,europe,38.3,15.9,U
+MN_VLC,europe,44.2,10.4,U
+MY_KSM,asia,1.5,110.3,U
+MY_KUM,asia,5.3,100.6,U
+N18A,north america,41,-109.7,U
+N51A,north america,40.9,-82.4,U
+NC01,north america,35.6,-79.2,U
+O06A,north america,40.2,-119.8,U
+O18A,north america,40.3,-110,U
+O20A,north america,40.1,-108.2,U
+O48A,north america,40.3,-85.2,U
+P15A,north america,39.6,-112.3,U
+P37A,north america,39.6,-94.3,U
+PETO,north america,39.2,-80.3,U
+PL_KSP,europe,50.8,16.3,U
+PM_PVAQ,europe,37.4,-7.7,U
+PS_PSI,asia,2.7,98.9,U
+Q18A,north america,39.1,-110.1,U
+Q19A,north america,39,-109.3,U
+Q49A,north america,39,-84.9,U
+Q58A,north america,38.9,-77.7,U
+Q59A,north america,38.9,-76.7,U
+R46A,north america,38.2,-87.5,U
+RADR,north america,46.4,-123.8,U
+RLMT,north america,45.1,-109.3,U
+RM_SIM,asia,20.1,92.9,U
+RRI2,north america,43.3,-111.3,U
+S06C,north america,37.9,-119.8,U
+S1-AUBSH,oceania,-26.9,153,U
+S1-AUBUS,oceania,-33.7,115.4,U
+S1-AUDCS,oceania,-32.2,148.6,U
+S1-AUKHS,oceania,-33.5,151.4,U
+S1-AUKUL,oceania,-32.7,118.2,U
+S1-AUMAR,oceania,-34.9,138.6,U
+S1-AUMAZ,oceania,-32,116,U
+S1-AUMHS,oceania,-35.4,149.1,U
+S1-AUMOU,oceania,-24.6,150,U
+S1-AUMTS,oceania,-35.3,149,U
+S18A,north america,37.7,-110,U
+S39A,north america,37.7,-93.3,U
+SCIA,north america,41.9,-93.2,U
+SDR,north america,32.7,-116.9,U
+SNB,north america,48.8,-123.2,U
+T15A,north america,37,-112.4,U
+T41A,north america,37,-91.8,U
+T59A,north america,37,-77.6,U
+TFRD,north america,33.5,-116.6,U
+TM_CRAI,asia,20.2,100.4,U
+TW_MATB,asia,26.1,119.9,U
+U33A,north america,36.4,-98.1,U
+UCCT,north america,41.8,-72.2,U
+V48A,north america,35.7,-86.8,U
+V53A,north america,35.7,-82.8,U
+V55A,north america,35.9,-81.2,U
+V57A,north america,35.9,-79.8,U
+V59A,north america,35.8,-78.2,U
+W06,north america,31.4,-83.9,U
+W22,north america,32.4,-83.9,U
+W25A,north america,35.2,-104.5,U
+WVL,north america,44.6,-69.7,U
+X37A,north america,34.6,-95.4,U
+X4_C02,asia,35.7,94.4,U
+X50B,north america,34.5,-85.6,U
+X55A,north america,34.5,-81.6,U
+XW_POGR,asia,41,75.6,U
+Y13A,north america,33.8,-113.8,U
+Y15A,north america,34,-112.3,U
+Y19A,north america,34,-109.3,U
+Y53A,north america,33.9,-83.6,U
+Y55A,north america,33.9,-81.9,U
+Z14A,north america,33.4,-112.9,U

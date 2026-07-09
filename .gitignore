@@ -1,0 +1,6 @@
+.DS_Store
+*
+!.gitignore
+!PlotScripts/
+!PlotScripts/**
+PlotScripts/Data/GlobalVs_Models/votemap_100_km.mat
