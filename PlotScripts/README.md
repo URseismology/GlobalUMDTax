@@ -1,5 +1,20 @@
 # GlobalUMDTax: Plotting Scripts & Data
 
+**Global Taxonomy Addresses the Paradox of Strength and History of Ancient Continents**
+
+*Tolulope Olugboji¹²\**, *Jean-Joel Legre¹†*, *Steve Carr¹†*, *Zachary Sudholz³⁴*
+
+¹ Department of Earth and Environmental Sciences, University of Rochester, USA  
+² Department of Electrical and Computer Engineering, University of Rochester, USA  
+³ Bullard Laboratories, Department of Earth Sciences, University of Cambridge, Cambridge, UK  
+⁴ Research School of Earth Sciences, The Australian National University, Canberra ACT, Australia  
+*\* Corresponding author: tolulope.olugboji@rochester.edu*  
+*† These authors contributed equally to this work.*
+
+**Keywords:** Continents | Mantle Discontinuity | Metasomatism | Craton Stability
+
+---
+
 This directory (`PlotScripts`) contains the MATLAB scripts and data necessary to reproduce the figures for the GlobalUMDTax manuscript.
 
 ## Project Structure
@@ -24,9 +39,8 @@ PlotScripts/
 > **To run `Figure2b` and `Figure2c`, you must download this file separately.**
 > 
 > **Download location:**
-> It is hosted on our internal NAS (`repovibranium`) at:
-> `/volume1/ADAMA-Shared/ManuscriptData/GlobalTaxUMD_2026/votemap_100_km.mat`
-> *(Please request a shareable link from the authors if you do not have NAS access).*
+> It is hosted on our internal NAS (`repovibranium`) and can be downloaded via this shareable link:
+> **[Download Large Files (including votemap_100_km.mat)](https://repovibranium.quickconnect.to/sharing/phF28aHED)**
 > 
 > **Installation:**
 > Place the downloaded `votemap_100_km.mat` file into the following directory relative to the scripts:
