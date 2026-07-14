@@ -16,4 +16,9 @@ As scripts are completed, reviewed, and finalized, they should be moved into thi
   * **Key Features**: Fits optimal Gaussian Mixture Models to depth residuals (Seismic - Thermal) to automatically identify probability modes. Groups clusters by tectonic type and compares CAM-22 and WINTERC-G side-by-side using grouped boxcharts.
   * **Outputs**: `Figures/Global_Study/FigSup1_GMM_Distributions.png` and `Figures/Global_Study/FigSup1_Tectonic_BoxPlots.png`
 
+* **`Figure2_FeatureStatsFinal.m`**
+  * **Purpose**: Generates the comprehensive Feature Statistics matrix, combining a 1:1 t-SNE embedding plot, clustered model boxcharts, and dense 2D Joint KDE distributions.
+  * **Key Features**: Employs an absolute layout geometry (1400x1100 px) to tightly pack axes. Features 2D Gaussian Kernel Density estimates dynamically shading the t-SNE scatter points and uses empirical 2-sigma GMM covariance boundary ellipses to delimit cluster cores.
+  * **Output**: `Figures/Global_Study/Figure2_FeatureStatsFinal.png`
+
 > **Note on Execution**: These scripts use relative paths (e.g., `./Data/` and `./Figures/`). To run them successfully, ensure your MATLAB current working directory is set to the main `PlotScripts` parent folder, or adjust the paths accordingly if running directly from within this `Final` folder.
