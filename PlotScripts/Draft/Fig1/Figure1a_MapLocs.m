@@ -263,7 +263,7 @@ function Figure1a_MapLocs()
     c_us.Label.FontWeight = 'bold'; 
     c_us.Label.FontSize = 14;
 
-    out_file_us = fullfile(out_dir, 'Figure1ax_US_MapLocs.png');
+    out_file_us = fullfile(out_dir, 'Figure1a_US_MapLocs.png');
     exportgraphics(f2, out_file_us, 'Resolution', 300);
     disp(['Figure saved as ', out_file_us]);
 end
