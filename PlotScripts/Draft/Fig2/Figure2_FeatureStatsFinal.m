@@ -64,9 +64,8 @@ function Figure2_FeatureStatsFinal()
     xlabel(ax_tsne, 'Projection dimension 1', 'FontSize', 12, 'FontWeight', 'bold');
     ylabel(ax_tsne, 'Projection dimension 2', 'FontSize', 12, 'FontWeight', 'bold');
     grid(ax_tsne, 'on'); box(ax_tsne, 'on'); axis(ax_tsne, 'square');
-    set(ax_tsne, 'XTickLabel', []);
+    set(ax_tsne, 'XTickLabel', []); set(ax_tsne, 'YTickLabel', []);
     leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'}, 'Location', 'northwest', 'FontSize', 11, 'Box', 'off');
-    title(ax_tsne, '(d)', 'Units', 'normalized', 'Position', [-0.05 1.05], 'HorizontalAlignment', 'left', 'FontSize', 16, 'FontWeight', 'bold');
 
     %% Left Panel Top: Joint KDE Scatters
     % Pulled down to Y=0.66 to close vertical gap with t-SNE.
@@ -116,7 +115,6 @@ function draw_box_panel(ax, cam, wint, PAPER_TO_ML, PAPER_COLORS, ylabel_str, co
         xticklabels(ax, {});
     end
     ylabel(ax, ylabel_str, 'FontSize', 11, 'FontWeight', 'bold'); grid(ax, 'on'); box(ax, 'off');
-    title(ax, ['(' letter ')'], 'Units', 'normalized', 'Position', [-0.15 1.05], 'HorizontalAlignment', 'left', 'FontSize', 16, 'FontWeight', 'bold');
 end
 
 function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, gmm_k4, PAPER_TO_ML, PAPER_COLORS, xlabel_str, ylabel_str, letter)
@@ -139,7 +137,7 @@ function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, gmm_k4, PAPER_TO_
     end
     box(main_ax, 'on'); grid(main_ax, 'on'); set(main_ax, 'YDir', 'reverse'); xlabel(main_ax, xlabel_str, 'FontSize', 11, 'FontWeight', 'bold');
     if ~isempty(ylabel_str), ylabel(main_ax, ylabel_str, 'FontSize', 11, 'FontWeight', 'bold'); else, set(main_ax, 'YTickLabel', []); end
-    set(main_ax, 'linewidth', 1.5, 'fontsize', 10); title(main_ax, ['(' letter ')'], 'Units', 'normalized', 'Position', [-0.05 1.15], 'HorizontalAlignment', 'left', 'FontSize', 16, 'FontWeight', 'bold');
+    set(main_ax, 'linewidth', 1.5, 'fontsize', 10);
     if ~isempty(top_ax)
         if max_dens_x > 0, ylim(top_ax, [0 max_dens_x * 1.1]); end; xlim(top_ax, [min(x_all)-0.1*std(x_all,'omitnan'), max(x_all)+0.1*std(x_all,'omitnan')]); xlim(main_ax, top_ax.XLim); axis(top_ax, 'off');
     end
