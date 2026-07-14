@@ -1,9 +1,9 @@
-function Figure2c_StatsOnly()
+function FigureS1c_StatsOnly()
     clear; close all; clc;
     
     %% 1. Load Clustering Statistics
     disp('Loading Clustering Statistics...');
-    stats_dir = '../../Data/MachineLearningData/rf_global_clustering/results/';
+    stats_dir = '../../../Data/MachineLearningData/rf_global_clustering/results/';
     cam22_opts = detectImportOptions(fullfile(stats_dir, 'clustered_data_Neg_CAM22.csv'));
     cam22_data = readtable(fullfile(stats_dir, 'clustered_data_Neg_CAM22.csv'), cam22_opts);
     
@@ -118,6 +118,6 @@ function Figure2c_StatsOnly()
     end
     
     %% Save Figure
-    exportgraphics(f, '../../Figures/Global_Study/Figure2c_StatsOnly.png', 'Resolution', 300);
-    disp('Figure saved as Figures/Global_Study/Figure2c_StatsOnly.png');
+    exportgraphics(f, '../../../Figures/Global_Study/FigureS1c_StatsOnly.png', 'Resolution', 300);
+    disp('Figure saved as Figures/Global_Study/FigureS1c_StatsOnly.png');
 end

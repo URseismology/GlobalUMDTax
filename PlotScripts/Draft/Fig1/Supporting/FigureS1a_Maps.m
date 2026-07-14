@@ -1,13 +1,13 @@
-function Figure2a_Maps() clear;
+function FigureS1a_Maps() clear;
 close all;
 clc;
 
-% Add paths addpath('../../Data/m_map');
-addpath('../../Data/landmask');
-addpath('../../Data/slanCM');
+% Add paths addpath('../../../Data/m_map');
+addpath('../../../Data/landmask');
+addpath('../../../Data/slanCM');
 
 % % 1. Load Data Grids disp('Loading CAM22 Model (for Temperature)...');
-CAM22_FILE = '../../Data/Velocity_Models/CAM2022-vs-tmp.r0.0.nc';
+CAM22_FILE = '../../../Data/Velocity_Models/CAM2022-vs-tmp.r0.0.nc';
 lon_cam = double(ncread(CAM22_FILE, 'longitude'));
 lat_cam = double(ncread(CAM22_FILE, 'latitude'));
 depth_cam = double(ncread(CAM22_FILE, 'depth'));
@@ -18,7 +18,7 @@ if isempty (d_idx_cam)
 end temp_raw = ncread(CAM22_FILE, 'tmp', [ 1, 1, d_idx_cam ], [ inf, inf, 1 ]);
 
 disp('Loading DBRD-NATURE2020 Tomography Model...');
-DBRD_FILE = '../../Data/MeltContent/DBRD-NATURE2020-depth.r0.1.nc';
+DBRD_FILE = '../../../Data/MeltContent/DBRD-NATURE2020-depth.r0.1.nc';
 lon_dbrd = double(ncread(DBRD_FILE, 'longitude'));
 lat_dbrd = double(ncread(DBRD_FILE, 'latitude'));
 depth_dbrd = double(ncread(DBRD_FILE, 'depth'));
@@ -34,12 +34,12 @@ v_ref = 4.50;
 % Reference velocity in km / s dvs_raw = (vs_raw - v_ref)./ v_ref * 100;
 
 % Load Votemap disp('Loading Votemap model...');
-votmap1 = load('../../Data/GlobalVs_Models/votemap_100_km.mat');
+votmap1 = load('../../../Data/GlobalVs_Models/votemap_100_km.mat');
 xq = double(votmap1.xq);
 yq = double(votmap1.yq);
 totvotpos1 = double(votmap1.totvotespos);
 
-% Load ocean mask maskocean = load('../../Data/maskocean.mat').maskocean;
+% Load ocean mask maskocean = load('../../../Data/maskocean.mat').maskocean;
 
 % %
     2. Interpolate Tomography Data onto Consistent Votemap
@@ -150,14 +150,14 @@ title('Shear-Velocity Perturbation (dVs/Vs) at 100 km', 'FontSize', 12,
 
 % %
     Save Figure exportgraphics(f,
-                               '../../Figures/Global_Study/Figure2a_Maps.png',
+                               '../../../Figures/Global_Study/FigureS1a_Maps.png',
                                'Resolution', 300);
-disp('Figure saved as Figures/Global_Study/Figure2a_Maps.png');
+disp('Figure saved as Figures/Global_Study/FigureS1a_Maps.png');
 end
 
     function
     plot_plate_boundaries() S_plates = shaperead(
-        '../../Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp');
+        '../../../Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp');
     for
       i = 1 : length(S_plates) ptype = S_plates(i).type;
     x = S_plates(i).X;

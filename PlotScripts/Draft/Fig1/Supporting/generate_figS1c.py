@@ -1,79 +1,20 @@
-function Figure2c_MapsLocs()
-    clear; close all; clc;
-    
-    % Add paths
-    addpath('../../Data/m_map');
-    addpath('../../Data/landmask');
-    addpath('../../Data/slanCM');
-    
-    %% 1. Load Data Grids
-    disp('Loading CAM22 Model (for Temperature & Vs)...');
-    CAM22_FILE = '../../Data/Velocity_Models/CAM2022-vs-tmp.r0.0.nc';
-    lon_cam = double(ncread(CAM22_FILE, 'longitude'));
-    lat_cam = double(ncread(CAM22_FILE, 'latitude'));
-    depth_cam = double(ncread(CAM22_FILE, 'depth'));
-    
-    d_idx_cam = find(depth_cam == 100);
-    if isempty(d_idx_cam)
-        [~, d_idx_cam] = min(abs(depth_cam - 100));
-    end
-    temp_raw = ncread(CAM22_FILE, 'tmp', [1, 1, d_idx_cam], [inf, inf, 1]);
-    vs_raw = ncread(CAM22_FILE, 'vs', [1, 1, d_idx_cam], [inf, inf, 1]);
-    v_ref = 4.50; % Reference velocity in km/s
-    dvs_raw = (vs_raw - v_ref) ./ v_ref * 100;
-    
-    disp('Loading DBRD-NATURE2020 Tomography Model...');
-    DBRD_FILE = '../../Data/MeltContent/DBRD-NATURE2020-depth.r0.1.nc';
-    lon_dbrd = double(ncread(DBRD_FILE, 'longitude'));
-    lat_dbrd = double(ncread(DBRD_FILE, 'latitude'));
-    depth_dbrd = double(ncread(DBRD_FILE, 'depth'));
-    
-    d_idx_dbrd = find(depth_dbrd == 100);
-    if isempty(d_idx_dbrd)
-        [~, d_idx_dbrd] = min(abs(depth_dbrd - 100));
-    end
-    lQ_raw = ncread(DBRD_FILE, 'lQ', [1, 1, d_idx_dbrd], [inf, inf, 1]);
-    
-    % Load Votemap
-    disp('Loading Votemap model...');
-    votmap1 = load('../../Data/GlobalVs_Models/votemap_100_km.mat');
-    xq = double(votmap1.xq);
-    yq = double(votmap1.yq);
-    totvotpos1 = double(votmap1.totvotespos);
-    
-    % Load ocean mask
-    maskocean = load('../../Data/maskocean.mat').maskocean;
-    
-    %% 2. Interpolate Tomography Data onto Consistent Votemap Grid
-    [LON_CAM, LAT_CAM] = ndgrid(lon_cam, lat_cam);
-    LON_CAM(LON_CAM > 180) = LON_CAM(LON_CAM > 180) - 360;
-    
-    [LON_DBRD, LAT_DBRD] = ndgrid(lon_dbrd, lat_dbrd);
-    LON_DBRD(LON_DBRD > 180) = LON_DBRD(LON_DBRD > 180) - 360;
-    
-    disp('Interpolating Tomography grids...');
-    F_Temp = scatteredInterpolant(double(LON_CAM(:)), double(LAT_CAM(:)), double(temp_raw(:)), 'linear', 'none');
-    Temp_Grid = F_Temp(xq, yq);
-    
-    F_lQ = scatteredInterpolant(double(LON_DBRD(:)), double(LAT_DBRD(:)), double(lQ_raw(:)), 'linear', 'none');
-    lQ_Grid = F_lQ(xq, yq);
-    
-    F_dvs = scatteredInterpolant(double(LON_CAM(:)), double(LAT_CAM(:)), double(dvs_raw(:)), 'linear', 'none');
-    dvs_Grid = F_dvs(xq, yq);
-    
-    % Convert lQ to ln(Q^-1) = -lQ * ln(10)
-    ln_Q_inv = -lQ_Grid * log(10);
-    
-    %% 3. Mask out oceans on all grids
-    Temp_Grid(maskocean) = NaN;
-    ln_Q_inv(maskocean) = NaN;
-    dvs_Grid(maskocean) = NaN;
-    totvotpos1(maskocean) = NaN;
-    
-    %% 4. Load Clustering Statistics
+import re
+
+with open('FigureS1b_Maps_Stats.m', 'r') as f:
+    code = f.read()
+
+# Extract preamble (imports and grid loading)
+preamble = re.search(r'function FigureS1b_Maps_Stats\(\).*?%% 4. Load Clustering Statistics', code, re.DOTALL).group(0)
+preamble = preamble.replace('FigureS1b_Maps_Stats', 'FigureS1c_MapsLocs')
+
+# Extract plot_plate_boundaries
+plot_plate = re.search(r'function plot_plate_boundaries\(\).*?end\n$', code, re.DOTALL).group(0)
+
+# Build new code
+new_code = preamble + """
     disp('Loading Clustering Statistics...');
-    stats_dir = '../../Data/MachineLearningData/rf_global_clustering/results/';
-    meta_dir = '../../Data/MachineLearningData/rf_global_clustering/data/';
+    stats_dir = '/Users/tolumorayo/SynologyDrive/1.UofR_Seismology/3_Projects/Pr1_GlobalUMDNature/6_Submit/3_PNAS/rf_global_clustering/results/';
+    meta_dir = '/Users/tolumorayo/SynologyDrive/1.UofR_Seismology/3_Projects/Pr1_GlobalUMDNature/6_Submit/3_PNAS/rf_global_clustering/data/';
     
     cam22_opts = detectImportOptions(fullfile(stats_dir, 'clustered_data_Neg_CAM22.csv'));
     cam22_data = readtable(fullfile(stats_dir, 'clustered_data_Neg_CAM22.csv'), cam22_opts);
@@ -111,19 +52,16 @@ function Figure2c_MapsLocs()
     
     % Helper to plot locations
     function plot_locs_left()
-        psz = 10; % Reduced by 50% for better spatial clarity
-        % C1: Red circle
-        m_scatter(st_lon(idx_c1), st_lat(idx_c1), psz, 'o', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.8 0.1 0.1], 'LineWidth', 1.0);
-        % C2: Blue triangle
-        m_scatter(st_lon(idx_c2), st_lat(idx_c2), psz, '^', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.1 0.3 0.8], 'LineWidth', 1.0);
-        % C3: Green square
-        m_scatter(st_lon(idx_c3), st_lat(idx_c3), psz, 's', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.1 0.6 0.3], 'LineWidth', 1.0);
+        psz = 12;
+        m_scatter(st_lon(idx_c1), st_lat(idx_c1), psz, 'o', 'MarkerFaceColor', 'none', 'MarkerEdgeColor', [0.8 0.1 0.1], 'LineWidth', 0.8);
+        m_scatter(st_lon(idx_c2), st_lat(idx_c2), psz, 'o', 'MarkerFaceColor', 'none', 'MarkerEdgeColor', [0.1 0.3 0.8], 'LineWidth', 0.8);
+        m_scatter(st_lon(idx_c3), st_lat(idx_c3), psz, 'o', 'MarkerFaceColor', 'none', 'MarkerEdgeColor', [0.1 0.6 0.3], 'LineWidth', 0.8);
     end
 
     function plot_locs_right()
-        psz = 10;
-        % C4: Black diamond
-        m_scatter(st_lon(idx_c4), st_lat(idx_c4), psz, 'd', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', 'k', 'LineWidth', 1.0);
+        psz = 12;
+        m_scatter(st_lon(idx_c4), st_lat(idx_c4), psz, 'o', 'MarkerFaceColor', 'none', 'MarkerEdgeColor', 'k', 'LineWidth', 0.8);
+        m_scatter(st_lon(idx_c4), st_lat(idx_c4), psz*0.8, 'p', 'MarkerFaceColor', [0.2 0.2 0.2], 'MarkerEdgeColor', 'k', 'LineWidth', 0.6);
     end
 
     %% Panel 1: Temperature (Top)
@@ -233,52 +171,11 @@ function Figure2c_MapsLocs()
     c4.Label.FontWeight = 'bold'; c4.Label.FontSize = 12;
 
     %% Save Figure
-    exportgraphics(f, '../../Figures/Global_Study/Figure2c_MapsLocs.png', 'Resolution', 300);
-    disp('Figure saved as Figures/Global_Study/Figure2c_MapsLocs.png');
+    exportgraphics(f, '../../../Figures/Global_Study/FigureS1c_MapsLocs.png', 'Resolution', 300);
+    disp('Figure saved as Figures/Global_Study/FigureS1c_MapsLocs.png');
 end
 
-function plot_plate_boundaries()
-    S_plates = shaperead('../../Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp');
-    for i = 1:length(S_plates)
-        ptype = S_plates(i).type;
-        x = S_plates(i).X;
-        y = S_plates(i).Y;
-        
-        if strcmp(ptype, 'subduction zone') || strcmp(ptype, 'collision zone')
-            if strcmp(ptype, 'subduction zone')
-                pc = [0.1 0.3 0.6]; % Muted Blue
-            else
-                pc = 'k';
-            end
-            m_line(x, y, 'color', pc, 'linewidth', 1.0);
-            
-            if strcmp(ptype, 'subduction zone')
-                valid = find(~isnan(x) & ~isnan(y));
-                if isempty(valid), continue; end
-                mx = x(valid(1));
-                my = y(valid(1));
-                dist = 0;
-                for k = 2:length(valid)
-                    idx = valid(k);
-                    prev = valid(k-1);
-                    if idx ~= prev + 1
-                        dist = 0;
-                        mx(end+1) = x(idx);
-                        my(end+1) = y(idx);
-                        continue;
-                    end
-                    d = sqrt((x(idx) - x(prev))^2 + (y(idx) - y(prev))^2);
-                    dist = dist + d;
-                    if dist >= 10
-                        mx(end+1) = x(idx);
-                        my(end+1) = y(idx);
-                        dist = 0;
-                    end
-                end
-                m_line(mx, my, 'color', pc, 'linestyle', 'none', 'marker', '^', 'markersize', 1.8, 'markerfacecolor', pc);
-            end
-        else
-            m_line(x, y, 'color', [0.7 0.7 0.7], 'linewidth', 0.6);
-        end
-    end
-end
+""" + plot_plate
+
+with open('FigureS1c_MapsLocs.m', 'w') as f:
+    f.write(new_code)

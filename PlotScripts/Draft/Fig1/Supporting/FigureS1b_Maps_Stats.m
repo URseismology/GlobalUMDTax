@@ -1,14 +1,14 @@
-function Figure2b_Maps_Stats()
+function FigureS1b_Maps_Stats()
     clear; close all; clc;
     
     % Add paths
-    addpath('../../Data/m_map');
-    addpath('../../Data/landmask');
-    addpath('../../Data/slanCM');
+    addpath('../../../Data/m_map');
+    addpath('../../../Data/landmask');
+    addpath('../../../Data/slanCM');
     
     %% 1. Load Data Grids
     disp('Loading CAM22 Model (for Temperature & Vs)...');
-    CAM22_FILE = '../../Data/Velocity_Models/CAM2022-vs-tmp.r0.0.nc';
+    CAM22_FILE = '../../../Data/Velocity_Models/CAM2022-vs-tmp.r0.0.nc';
     lon_cam = double(ncread(CAM22_FILE, 'longitude'));
     lat_cam = double(ncread(CAM22_FILE, 'latitude'));
     depth_cam = double(ncread(CAM22_FILE, 'depth'));
@@ -23,7 +23,7 @@ function Figure2b_Maps_Stats()
     dvs_raw = (vs_raw - v_ref) ./ v_ref * 100;
     
     disp('Loading DBRD-NATURE2020 Tomography Model...');
-    DBRD_FILE = '../../Data/MeltContent/DBRD-NATURE2020-depth.r0.1.nc';
+    DBRD_FILE = '../../../Data/MeltContent/DBRD-NATURE2020-depth.r0.1.nc';
     lon_dbrd = double(ncread(DBRD_FILE, 'longitude'));
     lat_dbrd = double(ncread(DBRD_FILE, 'latitude'));
     depth_dbrd = double(ncread(DBRD_FILE, 'depth'));
@@ -36,13 +36,13 @@ function Figure2b_Maps_Stats()
     
     % Load Votemap
     disp('Loading Votemap model...');
-    votmap1 = load('../../Data/GlobalVs_Models/votemap_100_km.mat');
+    votmap1 = load('../../../Data/GlobalVs_Models/votemap_100_km.mat');
     xq = double(votmap1.xq);
     yq = double(votmap1.yq);
     totvotpos1 = double(votmap1.totvotespos);
     
     % Load ocean mask
-    maskocean = load('../../Data/maskocean.mat').maskocean;
+    maskocean = load('../../../Data/maskocean.mat').maskocean;
     
     %% 2. Interpolate Tomography Data onto Consistent Votemap Grid
     [LON_CAM, LAT_CAM] = ndgrid(lon_cam, lat_cam);
@@ -72,7 +72,7 @@ function Figure2b_Maps_Stats()
     
     %% 4. Load Clustering Statistics
     disp('Loading Clustering Statistics...');
-    stats_dir = '../../Data/MachineLearningData/rf_global_clustering/results/';
+    stats_dir = '../../../Data/MachineLearningData/rf_global_clustering/results/';
     cam22_opts = detectImportOptions(fullfile(stats_dir, 'clustered_data_Neg_CAM22.csv'));
     cam22_data = readtable(fullfile(stats_dir, 'clustered_data_Neg_CAM22.csv'), cam22_opts);
     
@@ -263,12 +263,12 @@ function Figure2b_Maps_Stats()
     legend(leg_ax, [h1, h2], {'CAM22 Model', 'WINTERC-G Model'}, 'Location', 'north', 'Orientation', 'vertical', 'FontSize', 14, 'Box', 'off');
     
     %% Save Figure
-    exportgraphics(f, '../../Figures/Global_Study/Figure2b_Maps_Stats.png', 'Resolution', 300);
-    disp('Figure saved as Figures/Global_Study/Figure2b_Maps_Stats.png');
+    exportgraphics(f, '../../../Figures/Global_Study/FigureS1b_Maps_Stats.png', 'Resolution', 300);
+    disp('Figure saved as Figures/Global_Study/FigureS1b_Maps_Stats.png');
 end
 
 function plot_plate_boundaries()
-    S_plates = shaperead('../../Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp');
+    S_plates = shaperead('../../../Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp');
     for i = 1:length(S_plates)
         ptype = S_plates(i).type;
         x = S_plates(i).X;
