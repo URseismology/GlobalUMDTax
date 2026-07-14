@@ -52,16 +52,18 @@ The `PlotCratons.m` script (located in `Draft/FigX/`) explores various geologica
 All scripts are written in **MATLAB (R2022b or newer recommended)** and rely on the local `Data/` folder. They use relative paths, so they must be executed from the directory they reside in (e.g., `Draft/Fig2/`).
 
 ### Final Figures
-The primary scripts for the manuscript figures are:
+The primary scripts for the manuscript figures are located in the `Final/` directory:
 
-- **Figure 1:** Age-Craton Map and Scatter Plots
-  - `Draft/Fig1/Figure1_Amap_revised.m`
-  - `Draft/Fig1/Figure1_Rev2.m`
-- **Figure 2:** Mantle Physical Properties and Statistics
-  - `Draft/Fig2/Figure2b_Maps_Stats.m`: Generates 4x1 map panels with inset boxplots.
-  - `Draft/Fig2/Figure2c_MapsLocs.m`: Generates 4x2 map panels overlaying cluster locations.
+- **Figure 1:** Tectonic Context and Data Overview
+  - `Final/Figure1_Rev2.m`
+  - `Final/Figure1B_Scatter_Waveforms.m`
+- **Figure 2:** Feature Statistics and Lithospheric Distributions
+  - `Final/Figure2_FeatureStatsFinal.m`
+  - `Final/Revision1_Summary_Scatter_LAB.m`
 - **Figure 3:** Tectonic Regionalization and Residual Statistics
   - `Final/Figure3_ClustersTectonics.m`
+- **Supplemental Figures:**
+  - `Final/FigSup1_SeisVsThermal_Full.m`
 
 **To run a script:**
 1. Open MATLAB.
