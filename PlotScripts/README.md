@@ -60,8 +60,8 @@ The primary scripts for the manuscript figures are:
 - **Figure 2:** Mantle Physical Properties and Statistics
   - `Draft/Fig2/Figure2b_Maps_Stats.m`: Generates 4x1 map panels with inset boxplots.
   - `Draft/Fig2/Figure2c_MapsLocs.m`: Generates 4x2 map panels overlaying cluster locations.
-- **Figure 3:** Continent-Scale Comparisons
-  - `Draft/Fig3/Revision1_Figure3_Continent_CAM22.m`
+- **Figure 3:** Tectonic Regionalization and Residual Statistics
+  - `Final/Figure3_ClustersTectonics.m`
 
 **To run a script:**
 1. Open MATLAB.
