@@ -93,7 +93,12 @@ function Figure1a_MapLocs()
             lats = st_lat(indices);
             in_box = lons >= bbox(1) & lons <= bbox(2) & lats >= bbox(3) & lats <= bbox(4);
             if any(in_box)
-                m_scatter(lons(in_box), lats(in_box), psz, marker, 'MarkerFaceColor', 'w', 'MarkerEdgeColor', edge_color, 'LineWidth', 1.0);
+                sz = repmat(psz, size(lons));
+                if psz == 15 % Main map
+                    in_NA = lons >= -170 & lons <= -50 & lats >= 15 & lats <= 85;
+                    sz(~in_NA) = psz * 1.5;
+                end
+                m_scatter(lons(in_box), lats(in_box), sz(in_box), marker, 'MarkerFaceColor', 'w', 'MarkerEdgeColor', edge_color, 'LineWidth', 1.0);
             end
         end
         
@@ -196,12 +201,20 @@ function Figure1a_MapLocs()
     colormap(axMain, custom_cmap_main); 
     caxis(axMain, [300 1500]);
     plot_locs_c123();
-    title(axMain, 'CAM22 Temperature at 100 km (Clusters C1-C3)', 'FontSize', 16, 'FontWeight', 'bold');
+    
+    % Add dummy points for legend (outside visible area)
+    hC1 = scatter(axMain, NaN, NaN, 50, 'o', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.8 0.1 0.1], 'LineWidth', 1.0);
+    hC2 = scatter(axMain, NaN, NaN, 50, '^', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.1 0.3 0.8], 'LineWidth', 1.0);
+    hC3 = scatter(axMain, NaN, NaN, 50, 's', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.1 0.6 0.3], 'LineWidth', 1.0);
+    hC4 = scatter(axMain, NaN, NaN, 50, 'd', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', 'k', 'LineWidth', 1.0);
+    legend(axMain, [hC1, hC2, hC3, hC4], {'C1', 'C2', 'C3', 'C4'}, 'Location', 'northwest', 'FontSize', 12, 'FontWeight', 'bold');
+
+    % title(axMain, 'CAM22 Temperature at 100 km (Clusters C1-C3)', 'FontSize', 16, 'FontWeight', 'bold');
     
     c = colorbar(axMain, 'eastoutside');
     c.Label.String = 'Temperature (°C)';
     c.Label.FontWeight = 'bold'; 
-    c.Label.FontSize = 14;
+    c.Label.FontSize = 20;
 
     %% Inset Panel (200km Temp)
     disp('Plotting Inset Panel...');
@@ -222,7 +235,7 @@ function Figure1a_MapLocs()
     colormap(axInset, cmap_inset); 
     caxis(axInset, [1200 1400]);
     plot_locs_c4();
-    title(axInset, 'CAM22 at 200 km (C4)', 'FontSize', 12, 'FontWeight', 'bold');
+    % title(axInset, 'CAM22 at 200 km (C4)', 'FontSize', 12, 'FontWeight', 'bold');
     
     % Add colorbar for inset (small, vertical, placed in the Pacific region)
     % Shifted slightly to the right to sit squarely in the Pacific.
@@ -232,7 +245,7 @@ function Figure1a_MapLocs()
     c_in.Label.FontSize = 10;
 
     %% Save Figure 1
-    out_dir = '../../Figures/Global_Study';
+    out_dir = '../../Figures/ForPub/Fig1/Old';
     if ~isfolder(out_dir), mkdir(out_dir); end
     out_file = fullfile(out_dir, 'Figure1a_MapLocs.png');
     exportgraphics(f, out_file, 'Resolution', 300);
@@ -256,12 +269,19 @@ function Figure1a_MapLocs()
     caxis(axUS, [300 1500]);
     plot_locs_c123(40, [-130, -65, 22, 52]); % Explicitly clip points to US bounds to prevent wrap artifacts
     
-    title(axUS, 'CAM22 Temperature at 100 km (US Zoom - Clusters C1-C3)', 'FontSize', 16, 'FontWeight', 'bold');
+    % Add dummy points for legend (outside visible area)
+    hC1_us = scatter(axUS, NaN, NaN, 80, 'o', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.8 0.1 0.1], 'LineWidth', 1.5);
+    hC2_us = scatter(axUS, NaN, NaN, 80, '^', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.1 0.3 0.8], 'LineWidth', 1.5);
+    hC3_us = scatter(axUS, NaN, NaN, 80, 's', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', [0.1 0.6 0.3], 'LineWidth', 1.5);
+    hC4_us = scatter(axUS, NaN, NaN, 80, 'd', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', 'k', 'LineWidth', 1.5);
+    legend(axUS, [hC1_us, hC2_us, hC3_us, hC4_us], {'C1', 'C2', 'C3', 'C4'}, 'Location', 'northwest', 'FontSize', 14, 'FontWeight', 'bold');
+
+    % title(axUS, 'CAM22 Temperature at 100 km (US Zoom - Clusters C1-C3)', 'FontSize', 16, 'FontWeight', 'bold');
     
     c_us = colorbar(axUS, 'eastoutside');
     c_us.Label.String = 'Temperature (°C)';
     c_us.Label.FontWeight = 'bold'; 
-    c_us.Label.FontSize = 14;
+    c_us.Label.FontSize = 20;
 
     out_file_us = fullfile(out_dir, 'Figure1a_US_MapLocs.png');
     exportgraphics(f2, out_file_us, 'Resolution', 300);

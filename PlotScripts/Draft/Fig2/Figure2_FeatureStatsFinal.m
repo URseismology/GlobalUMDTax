@@ -14,6 +14,13 @@ function Figure2_FeatureStatsFinal()
     PAPER_TO_ML = [2, 3, 0, 1]; 
     PAPER_COLORS = {[0.8, 0.1, 0.1], [0.1, 0.3, 0.8], [0.1, 0.6, 0.3], [0.0, 0.0, 0.0]};
     
+    % Font settings for easy tweaking
+    FONTS.axis_label = 20;
+    FONTS.tick_label = 15;
+    FONTS.legend_main = 24;
+    FONTS.legend_tsne = 22;
+    FONTS.panel_label = 25;
+    
     % Canvas: 1400x1100 (Option B)
     f = figure('Name', 'Figure 2: Feature Stats Final', 'Position', [100, 100, 1400, 1100], 'Color', 'w');
     
@@ -28,15 +35,15 @@ function Figure2_FeatureStatsFinal()
     bx1 = axes('Position', [0.62, 0.49, w_box, h_box]);
     bx2 = axes('Position', [0.81, 0.49, w_box, h_box]);
     
-    draw_box_panel(bx1, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Depth (km)', 'Neg_Depth', 'Neg_Depth', '', false);
-    draw_box_panel(bx2, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Attenuation ln(Q^{-1})', 'logS_AttenuationRF_Neg', 'logS_AttenuationRF_Neg', '', false);
-    draw_box_panel(bx3, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Temperature (\circC)', 'Temperature_N_CAM22', 'Temperature_N_WINT', 'e', true);
-    draw_box_panel(bx4, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Velocity perturbation (dV_s %)', 'dVsCAM22RF_Neg', 'dVsWINTRF_Neg', 'f', true);
+    draw_box_panel(bx1, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Depth (km)', 'Neg_Depth', 'Neg_Depth', 'e', false, FONTS);
+    draw_box_panel(bx2, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Attenuation ln(Q^{-1})', 'logS_AttenuationRF_Neg', 'logS_AttenuationRF_Neg', 'f', false, FONTS);
+    draw_box_panel(bx3, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Temperature (\circC)', 'Temperature_N_CAM22', 'Temperature_N_WINT', 'g', true, FONTS);
+    draw_box_panel(bx4, cam, wint, PAPER_TO_ML, PAPER_COLORS, 'Velocity perturbation (dV_s %)', 'dVsCAM22RF_Neg', 'dVsWINTRF_Neg', 'h', true, FONTS);
     
     lg_ax = axes('Position', [0.62, 0.88, 0.35, 0.05], 'Visible', 'off');
     h_cam = patch(lg_ax, nan, nan, [0.5 0.5 0.5], 'FaceAlpha', 0.85, 'EdgeColor', 'none');
     h_wint = patch(lg_ax, nan, nan, [0.5 0.5 0.5], 'FaceAlpha', 0.30, 'EdgeColor', 'none');
-    legend(lg_ax, [h_cam, h_wint], {'CAM22', 'WINTERC-G'}, 'Location', 'north', 'Orientation', 'horizontal', 'FontSize', 12, 'Box', 'off');
+    legend(lg_ax, [h_cam, h_wint], {'CAM22', 'WINTERC-G'}, 'Location', 'north', 'Orientation', 'horizontal', 'FontSize', FONTS.legend_main, 'Box', 'off');
 
     %% Left Panel Bottom: t-SNE Scatter
     % 1:1 Aspect ratio, vertically expanded to close the gap.
@@ -61,11 +68,17 @@ function Figure2_FeatureStatsFinal()
         end
         h_clusters(p) = plot(ax_tsne, nan, nan, 'o', 'MarkerFaceColor', PAPER_COLORS{p}, 'MarkerEdgeColor', 'w', 'MarkerSize', 10, 'LineStyle', 'none');
     end
-    xlabel(ax_tsne, 'Projection dimension 1', 'FontSize', 12, 'FontWeight', 'bold');
-    ylabel(ax_tsne, 'Projection dimension 2', 'FontSize', 12, 'FontWeight', 'bold');
+    xlabel(ax_tsne, 'Projection dimension 1', 'FontSize', FONTS.axis_label, 'FontWeight', 'bold');
+    ylabel(ax_tsne, 'Projection dimension 2', 'FontSize', FONTS.axis_label, 'FontWeight', 'bold');
     grid(ax_tsne, 'on'); box(ax_tsne, 'on'); axis(ax_tsne, 'square');
     set(ax_tsne, 'XTickLabel', []); set(ax_tsne, 'YTickLabel', []);
-    leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'}, 'Location', 'northwest', 'FontSize', 11, 'Box', 'off');
+    set(ax_tsne, 'FontSize', FONTS.tick_label);
+    ax_pos = get(ax_tsne, 'Position');
+    annotation(ax_tsne.Parent, 'textbox', [ax_pos(1), ax_pos(2), 0.05, 0.05], ...
+        'String', '(d)', 'FontSize', FONTS.panel_label, ...
+        'FontWeight', 'bold', 'HorizontalAlignment', 'left', ...
+        'VerticalAlignment', 'bottom', 'LineStyle', 'none', 'Margin', 5);
+    leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'}, 'Location', 'northwest', 'FontSize', FONTS.legend_tsne, 'Box', 'off');
 
     %% Left Panel Top: Joint KDE Scatters
     % Pulled down to Y=0.66 to close vertical gap with t-SNE.
@@ -73,14 +86,14 @@ function Figure2_FeatureStatsFinal()
     
     xA = 0.05;
     ax_mA = axes('Position', [xA, y_kde, w_kde, h_kde]); ax_tA = axes('Position', [xA, y_kde + h_kde + 0.01, w_kde, 0.05]);
-    plotjointkde(ax_mA, ax_tA, [], cam.logS_AttenuationRF_Neg, cam.Neg_Depth, cam.GMM_k4, PAPER_TO_ML, PAPER_COLORS, 'Attenuation ln(Q^{-1})', 'Depth (km)', 'a');
+    plotjointkde(ax_mA, ax_tA, [], cam.logS_AttenuationRF_Neg, cam.Neg_Depth, cam.GMM_k4, PAPER_TO_ML, PAPER_COLORS, 'Attenuation ln(Q^{-1})', 'Depth (km)', 'a', FONTS);
         
     xB = xA + w_kde + 0.02; ax_mB = axes('Position', [xB, y_kde, w_kde, h_kde]); ax_tB = axes('Position', [xB, y_kde + h_kde + 0.01, w_kde, 0.05]);
-    plotjointkde(ax_mB, ax_tB, [], cam.Temperature_N_CAM22, cam.Neg_Depth, cam.GMM_k4, PAPER_TO_ML, PAPER_COLORS, 'Temperature (\circC)', '', 'b');
+    plotjointkde(ax_mB, ax_tB, [], cam.Temperature_N_CAM22, cam.Neg_Depth, cam.GMM_k4, PAPER_TO_ML, PAPER_COLORS, 'Temperature (\circC)', '', 'b', FONTS);
         
     xC = xB + w_kde + 0.02; ax_mC = axes('Position', [xC, y_kde, w_kde, h_kde]); ax_tC = axes('Position', [xC, y_kde + h_kde + 0.01, w_kde, 0.05]);
     ax_rC = axes('Position', [xC + w_kde + 0.005, y_kde, 0.025, h_kde]);
-    plotjointkde(ax_mC, ax_tC, ax_rC, cam.dVsCAM22RF_Neg, cam.Neg_Depth, cam.GMM_k4, PAPER_TO_ML, PAPER_COLORS, 'Velocity perturbation (dV_s %)', '', 'c');
+    plotjointkde(ax_mC, ax_tC, ax_rC, cam.dVsCAM22RF_Neg, cam.Neg_Depth, cam.GMM_k4, PAPER_TO_ML, PAPER_COLORS, 'Velocity perturbation (dV_s %)', '', 'c', FONTS);
     
     linkaxes([ax_mA, ax_mB, ax_mC], 'y');
     
@@ -99,7 +112,7 @@ function plot_gmm_ellipse(ax, x, y, color)
     patch(ax, ex, ey, color, 'FaceAlpha', 0.15, 'EdgeColor', color, 'LineWidth', 2);
 end
 
-function draw_box_panel(ax, cam, wint, PAPER_TO_ML, PAPER_COLORS, ylabel_str, col_cam, col_wint, letter, keep_xlabels)
+function draw_box_panel(ax, cam, wint, PAPER_TO_ML, PAPER_COLORS, ylabel_str, col_cam, col_wint, letter, keep_xlabels, FONTS)
     hold(ax, 'on');
     for p = 1:4
         ml_id = PAPER_TO_ML(p);
@@ -114,10 +127,18 @@ function draw_box_panel(ax, cam, wint, PAPER_TO_ML, PAPER_COLORS, ylabel_str, co
     else
         xticklabels(ax, {});
     end
-    ylabel(ax, ylabel_str, 'FontSize', 11, 'FontWeight', 'bold'); grid(ax, 'on'); box(ax, 'off');
+    ylabel(ax, ylabel_str, 'FontSize', FONTS.axis_label, 'FontWeight', 'bold'); grid(ax, 'on'); box(ax, 'off');
+    set(ax, 'FontSize', FONTS.tick_label);
+    if ~isempty(letter)
+        ax_pos = get(ax, 'Position');
+        annotation(ax.Parent, 'textbox', [ax_pos(1) + ax_pos(3) - 0.05, ax_pos(2), 0.05, 0.05], ...
+            'String', ['(' letter ')'], 'FontSize', FONTS.panel_label, ...
+            'FontWeight', 'bold', 'HorizontalAlignment', 'right', ...
+            'VerticalAlignment', 'bottom', 'LineStyle', 'none', 'Margin', 5);
+    end
 end
 
-function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, gmm_k4, PAPER_TO_ML, PAPER_COLORS, xlabel_str, ylabel_str, letter)
+function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, gmm_k4, PAPER_TO_ML, PAPER_COLORS, xlabel_str, ylabel_str, letter, FONTS)
     hold(main_ax, 'on'); if ~isempty(top_ax), hold(top_ax, 'on'); end; if ~isempty(right_ax), hold(right_ax, 'on'); end
     max_dens_x = 0; max_dens_y = 0;
     for p = 1:4
@@ -135,9 +156,17 @@ function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, gmm_k4, PAPER_TO_
             [f_y, xi_y] = ksdensity(y_data); fill(right_ax, f_y, xi_y, PAPER_COLORS{p}, 'EdgeColor', 'none', 'FaceAlpha', 0.5); plot(right_ax, f_y, xi_y, '-', 'Color', PAPER_COLORS{p}, 'LineWidth', 1.5); max_dens_y = max(max_dens_y, max(f_y));
         end
     end
-    box(main_ax, 'on'); grid(main_ax, 'on'); set(main_ax, 'YDir', 'reverse'); xlabel(main_ax, xlabel_str, 'FontSize', 11, 'FontWeight', 'bold');
-    if ~isempty(ylabel_str), ylabel(main_ax, ylabel_str, 'FontSize', 11, 'FontWeight', 'bold'); else, set(main_ax, 'YTickLabel', []); end
-    set(main_ax, 'linewidth', 1.5, 'fontsize', 10);
+    box(main_ax, 'on'); grid(main_ax, 'on'); set(main_ax, 'YDir', 'reverse'); xlabel(main_ax, xlabel_str, 'FontSize', FONTS.axis_label, 'FontWeight', 'bold');
+    if ~isempty(ylabel_str), ylabel(main_ax, ylabel_str, 'FontSize', FONTS.axis_label, 'FontWeight', 'bold'); else, set(main_ax, 'YTickLabel', []); end
+    set(main_ax, 'linewidth', 1.5, 'fontsize', FONTS.tick_label);
+    
+    if ~isempty(letter)
+        ax_pos = get(main_ax, 'Position');
+        annotation(main_ax.Parent, 'textbox', [ax_pos(1), ax_pos(2), 0.05, 0.05], ...
+            'String', ['(' letter ')'], 'FontSize', FONTS.panel_label, ...
+            'FontWeight', 'bold', 'HorizontalAlignment', 'left', ...
+            'VerticalAlignment', 'bottom', 'LineStyle', 'none', 'Margin', 5);
+    end
     if ~isempty(top_ax)
         if max_dens_x > 0, ylim(top_ax, [0 max_dens_x * 1.1]); end; xlim(top_ax, [min(x_all)-0.1*std(x_all,'omitnan'), max(x_all)+0.1*std(x_all,'omitnan')]); xlim(main_ax, top_ax.XLim); axis(top_ax, 'off');
     end
