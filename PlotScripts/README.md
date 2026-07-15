@@ -61,7 +61,8 @@ The primary scripts for the manuscript figures are located in the `Final/` direc
   - `Final/Figure2_FeatureStatsFinal.m`
   - `Final/Revision1_Summary_Scatter_LAB.m`
 - **Figure 3:** Tectonic Regionalization and Residual Statistics
-  - `Final/Figure3_ClustersTectonics.m`
+  - `Final/Figure3_ClustersTectonics.m` (Original script with the full geological categorization)
+  - `Draft/Fig3/Figure3_ClustersTectonics_Reduced.m` (Revised script: reduces categories to 4 by merging Oceanic into Craton Margins and Old Oceanic into Young Continents, with an optimized layout featuring a colorized horizontal symbol legend nested below the maps)
 - **Supplemental Figures:**
   - `Final/FigSup1_SeisVsThermal_Full.m`
 
