@@ -25,6 +25,11 @@ As scripts are completed, reviewed, and finalized, they should be moved into thi
   * **Key Features**: Dynamic horizontal panel layout, custom 2x2 box/bar plots, geometrically anchored global inset maps, and detailed subduction-zone boundary markers.
   * **Output**: `Figures/Global_Study/Figure3_ClustersTectonics_Draft.png`
 
+* **`Figure3_ClustersTectonics_Reduced.m`** *(Located in `../Draft/Fig3/`)*
+  * **Purpose**: Generates continent-scale maps overlaying clustering results with a simplified 4-category tectonic regionalization, merging Oceanic into Craton Margins, and Old Oceanic into Young Continents.
+  * **Key Features**: Completely optimized layout that places statistics side-by-side with a shared, fixed Y-axis. Features geographically-anchored panel labels, and an elegant horizontally-stacked, colorized symbol legend perfectly aligned beneath the map.
+  * **Output**: `Figures/Global_Study/Figure3_ClustersTectonics_Reduced.png`
+
 * **`Revision1_Summary_Scatter_LAB.m`**
   * **Purpose**: Generates the massive 2x2 grid of custom Joint-Distribution KDE scatter plots.
   * **Key Features**: Colors individual scatter points based on their 2D Kernel Density Estimate, ensuring high-probability cores are visible. Displays marginal 1D distributions on the top and right axes to explicitly correlate the point cloud with the Thermal LAB. 
