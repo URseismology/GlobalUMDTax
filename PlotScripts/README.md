@@ -34,7 +34,7 @@ The `PlotCratons.m` script (located in `Draft/FigX/`) explores various geologica
    - *Reference: French, S. W., & Romanowicz, B. A. (or Lekic, V.) - Outlines based on global/regional tomography models.*
 
 7. **Bedle Craton Boundaries (KML):** `Data/GeologicalData/BedleCratons/*.kml`
-   - *Reference: Bedle digitization data for craton boundaries.*
+   - *Reference: Bedle, H. (2021). [DOI: 10.1029/2021TC006714](https://doi.org/10.1029/2021TC006714)*
 
 ## Important Note on Large Data Files
 
