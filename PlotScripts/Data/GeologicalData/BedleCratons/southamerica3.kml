@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>southamerica3.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Placemark>
+		<name>southamerica3</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.35158850939621,-5.32320212630328,0 -58.1771649222575,-6.284003954917782,0 -57.23704716859642,-6.427572669332238,0 -56.0489130778094,-6.340896487388059,0 -55.59251127246934,-6.246517120881667,0 -55.15381206438939,-7.242413092832559,0 -54.78475030502975,-7.927395237131885,0 -54.64546207576349,-8.923381429977635,0 -54.05328013211853,-9.356844700815495,0 -53.34859374234933,-9.443848650422099,0 -52.5352493084772,-9.286051323467364,0 -52.58479370086402,-8.692147192749033,0 -51.81795880134416,-8.03811038373706,0 -51.44467213973955,-6.785698619827966,0 -50.85226344438829,-5.739471814231841,0 -50.60852747605854,-5.034235609721389,0 -52.06136357465805,-4.399438676074289,0 -52.86472711180389,-4.041476033765073,0 -53.19945020873197,-3.902067199561121,0 -53.6202800372697,-3.155972071797738,0 -54.09458497434053,-3.218536689660154,0 -54.94818275290489,-3.487020192328218,0 -55.58348493796895,-3.916590922202744,0 -56.31461241178025,-4.038615060486537,0 -57.25098954690954,-4.203309742935769,0 -58.11961632594416,-4.280836665145535,0 -58.62993054660539,-4.484115839884897,0 -59.20859812359462,-4.766631231457641,0 -59.35158850939621,-5.32320212630328,0 
+			</coordinates>
+		</LineString>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	</Placemark>
+</Document>
+</kml>

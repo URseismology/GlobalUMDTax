@@ -30,6 +30,11 @@ As scripts are completed, reviewed, and finalized, they should be moved into thi
   * **Key Features**: Completely optimized layout that places statistics side-by-side with a shared, fixed Y-axis. Features geographically-anchored panel labels, and an elegant horizontally-stacked, colorized symbol legend perfectly aligned beneath the map.
   * **Output**: `Figures/Global_Study/Figure3_ClustersTectonics_Reduced.png`
 
+* **`Figure3_ClustersTectonicsCratons_Reduced.m`** *(Located in `../Draft/Fig3/`)*
+  * **Purpose**: Identical to `Figure3_ClustersTectonics_Reduced.m`, but specifically overlays custom Bedle (2021) Craton Boundaries dynamically parsed from individual KML files.
+  * **Key Features**: Dynamically loads KML polygons and renders them as bold green outlines overlaid precisely on top of the tectonic map, data symbols, and the global inset map.
+  * **Output**: `Figures/Global_Study/Figure3_ClustersTectonicsCratons_Reduced.png`
+
 * **`Revision1_Summary_Scatter_LAB.m`**
   * **Purpose**: Generates the massive 2x2 grid of custom Joint-Distribution KDE scatter plots.
   * **Key Features**: Colors individual scatter points based on their 2D Kernel Density Estimate, ensuring high-probability cores are visible. Displays marginal 1D distributions on the top and right axes to explicitly correlate the point cloud with the Thermal LAB. 

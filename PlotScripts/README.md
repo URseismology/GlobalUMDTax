@@ -33,6 +33,9 @@ The `PlotCratons.m` script (located in `Draft/FigX/`) explores various geologica
 6. **Africa Lekic Cratons (MAT):** `Data/GeologicalData/Africa/geoData/AfricaCratons_Lekic.mat` (Commented out)
    - *Reference: French, S. W., & Romanowicz, B. A. (or Lekic, V.) - Outlines based on global/regional tomography models.*
 
+7. **Bedle Craton Boundaries (KML):** `Data/GeologicalData/BedleCratons/*.kml`
+   - *Reference: Bedle digitization data for craton boundaries.*
+
 ## Important Note on Large Data Files
 
 > [!WARNING]
@@ -63,6 +66,7 @@ The primary scripts for the manuscript figures are located in the `Final/` direc
 - **Figure 3:** Tectonic Regionalization and Residual Statistics
   - `Final/Figure3_ClustersTectonics.m` (Original script with the full geological categorization)
   - `Draft/Fig3/Figure3_ClustersTectonics_Reduced.m` (Revised script: reduces categories to 4 by merging Oceanic into Craton Margins and Old Oceanic into Young Continents, with an optimized layout featuring a colorized horizontal symbol legend nested below the maps)
+  - `Draft/Fig3/Figure3_ClustersTectonicsCratons_Reduced.m` (Final polished script: incorporates the Bedle Craton boundaries from KML files, plotting them as bold green outlines above the scatter symbols and inside the global inset map).
 - **Supplemental Figures:**
   - `Final/FigSup1_SeisVsThermal_Full.m`
 
