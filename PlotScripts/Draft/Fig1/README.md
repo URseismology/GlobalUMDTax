@@ -60,3 +60,12 @@ The `Supporting/` directory contains a collection of scripts moved from previous
 ### `FigureS1c_StatsOnly.m`
 *   **Purpose**: Generates solely the statistical correlation scatter plots without the heavy map renders.
 *   **Output**: `Figures/Global_Study/FigureS1c_StatsOnly.png`
+
+### 5. `Figure4_DeepStructureCratonLAB.m`
+*   **Purpose**: Renders the 3-panel Mesozoic paleo-coastline maps and inset statistical bar chart linking C4 to ancient subduction.
+*   **Description**: Pulls paleocoastlines dynamically via GPlates API for 200, 150, and 90 Ma. Overlays the subducted slabs for the three respective Mesozoic phases (260-170 Ma, 160-120 Ma, 110-50 Ma) and spatially bins C4 stations within 1 degree of proximity. Embeds an inset bar chart proving the spatial scaling correlation continent-by-continent.
+*   **Inputs**:
+    *   `Data/MachineLearningData/rf_global_clustering/results/clustered_data_Neg_CAM22.csv`
+    *   `VedSlabContours/SlabHistory.txt`
+*   **Outputs**:
+    *   `Figures/Global_Study/Figure4_DeepStructureCratonLAB.png`
