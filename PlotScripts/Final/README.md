@@ -45,4 +45,9 @@ As scripts are completed, reviewed, and finalized, they should be moved into thi
   * **Key Features**: Fits optimal Gaussian Mixture Models to depth residuals (Seismic - Thermal) to automatically identify probability modes. Groups clusters by tectonic type and compares CAM-22 and WINTERC-G side-by-side using grouped boxcharts.
   * **Outputs**: `Figures/Global_Study/FigSup1_GMM_Distributions.png` and `Figures/Global_Study/FigSup1_Tectonic_BoxPlots.png`
 
+* **`Figure4_DeepStructureCratonLAB.m`**
+  * **Purpose**: Renders the 3-panel Mesozoic paleo-coastline maps and inset statistical bar chart linking C4 to ancient subduction.
+  * **Key Features**: Pulls paleocoastlines dynamically via GPlates API for 200, 150, and 90 Ma. Overlays the subducted slabs for the three respective Mesozoic phases and spatially bins C4 stations within 1 degree of proximity. Embeds an inset bar chart proving the spatial scaling correlation continent-by-continent.
+  * **Output**: `Figures/Global_Study/Figure4_DeepStructureCratonLAB.png`
+
 > **Note on Execution**: These scripts use relative paths (e.g., `./Data/` and `./Figures/`). To run them successfully, ensure your MATLAB current working directory is set to the main `PlotScripts` parent folder, or adjust the paths accordingly if running directly from within this `Final` folder.
