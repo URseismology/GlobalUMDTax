@@ -23,7 +23,7 @@ num_all = length(all_lats);
 idx_c4 = find(all_labels == 1);
 num_c4 = length(idx_c4);
 
-mat_file = '../VedSlabContours/Reconstructed_Subduction_Zones_Youngeta2018.mat';
+mat_file = '../Data/VedSlabContours/Reconstructed_Subduction_Zones_Youngeta2018.mat';
 load(mat_file); % sz struct array
 
 % Group slabs
