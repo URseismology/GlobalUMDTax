@@ -65,7 +65,7 @@ function Figure2_FeatureStatsFinal()
     ylabel(ax_tsne, 'Projection dimension 2', 'FontSize', 12, 'FontWeight', 'bold');
     grid(ax_tsne, 'on'); box(ax_tsne, 'on'); axis(ax_tsne, 'square');
     set(ax_tsne, 'XTickLabel', []); set(ax_tsne, 'YTickLabel', []);
-    leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'}, 'Location', 'northwest', 'FontSize', 11, 'Box', 'off');
+    leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Deep)'}, 'Location', 'northwest', 'FontSize', 11, 'Box', 'off');
 
     %% Left Panel Top: Joint KDE Scatters
     % Pulled down to Y=0.66 to close vertical gap with t-SNE.

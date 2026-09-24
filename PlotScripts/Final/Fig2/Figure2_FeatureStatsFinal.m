@@ -78,7 +78,7 @@ function Figure2_FeatureStatsFinal()
         'String', '(d)', 'FontSize', FONTS.panel_label, ...
         'FontWeight', 'bold', 'HorizontalAlignment', 'left', ...
         'VerticalAlignment', 'bottom', 'LineStyle', 'none', 'Margin', 5);
-    leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'}, 'Location', 'northwest', 'FontSize', FONTS.legend_tsne, 'Box', 'off');
+    leg1 = legend(ax_tsne, h_clusters, {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Deep)'}, 'Location', 'northwest', 'FontSize', FONTS.legend_tsne, 'Box', 'off');
 
     %% Left Panel Top: Joint KDE Scatters
     % Pulled down to Y=0.66 to close vertical gap with t-SNE.

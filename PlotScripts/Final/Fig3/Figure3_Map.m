@@ -1,4 +1,4 @@
-function Figure1a_MapLocsV2()
+function Figure3_Map()
     clear; close all; clc;
     
     %% 0. Global Parameters for Easy Tweaking
@@ -219,7 +219,7 @@ function Figure1a_MapLocsV2()
 
     function plot_pearson_cratons(lw)
         if nargin < 1, lw = PEARSON_LINEWIDTH; end
-        kml_dir = '../PearsonCratons/digitization';
+        kml_dir = '../../Draft/PearsonCratons/digitization'; % data lives under Draft/, not duplicated here
         kml_files = dir(fullfile(kml_dir, '*.kml'));
         for i = 1:length(kml_files)
             filename = fullfile(kml_dir, kml_files(i).name);
@@ -326,7 +326,7 @@ function Figure1a_MapLocsV2()
     %% Save Figure 1
     out_dir = '../../Figures/Global_Study';
     if ~isfolder(out_dir), mkdir(out_dir); end
-    out_file = fullfile(out_dir, 'Figure1a_MapLocsV2.png');
+    out_file = fullfile(out_dir, 'Figure3_Map.png');
     exportgraphics(f, out_file, 'Resolution', 300);
     disp(['Figure saved as ', out_file]);
     
@@ -360,7 +360,7 @@ function Figure1a_MapLocsV2()
     c_us.Label.FontWeight = 'bold'; 
     c_us.Label.FontSize = FONT_SIZE_CBAR;
 
-    out_file_us = fullfile(out_dir, 'Figure1a_US_MapLocsV2.png');
+    out_file_us = fullfile(out_dir, 'Figure3_Map_USInset.png');
     exportgraphics(f2, out_file_us, 'Resolution', 300);
     disp(['Figure saved as ', out_file_us]);
 end

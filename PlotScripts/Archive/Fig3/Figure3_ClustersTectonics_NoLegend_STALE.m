@@ -57,7 +57,7 @@ function Figure3_ClustersTectonics_Draft()
     PAPER_TO_ML = [2, 3, 0, 1]; 
     PAPER_COLORS = {[0.8, 0.1, 0.1], [0.1, 0.3, 0.8], [0.1, 0.6, 0.3], [0.0, 0.0, 0.0]};
     PAPER_SHAPES = {'o', '^', 's', 'd'}; % Match Fig1a shapes explicitly
-    C_NAMES = {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'};
+    C_NAMES = {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Deep)'};
     
     % Original Tectonic Map Colors (ensuring index 1 aligns with Cratons)
     cmapTec = zeros(7, 3);

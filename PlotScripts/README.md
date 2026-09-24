@@ -12,8 +12,9 @@ PlotScripts/
 │   ├── Velocity_Models/  # Tomography models (CAM22, etc.)
 │   ├── MachineLearningData/  # Clustering results and metadata
 │   └── ...               # (Other shapefiles and models)
-├── Draft/                # Exploratory and working scripts
-├── Final/                # Refined figures
+├── Draft/                # Exploratory and working scripts (not guaranteed current)
+├── Final/                # Canonical scripts, one location per main-text figure -- see Final/README.md
+├── Archive/              # Confirmed-superseded scripts, kept for history (see Final/README.md)
 └── README.md             # This guide
 ```
 
@@ -52,29 +53,44 @@ The `PlotCratons.m` script (located in `Draft/FigX/`) explores various geologica
 
 ## Running the Scripts
 
-All scripts are written in **MATLAB (R2022b or newer recommended)** and rely on the local `Data/` folder. They use relative paths, so they must be executed from the directory they reside in (e.g., `Draft/Fig2/`).
+All scripts are written in **MATLAB (R2022b or newer recommended)** and rely on the local `Data/`
+folder. They use relative paths written for a script sitting **two levels below `PlotScripts/`**
+(e.g. `../../Data/...`), so run each one with its own containing folder as MATLAB's current
+directory — not the `PlotScripts/` root.
 
-### Final Figures
-The primary scripts for the manuscript figures are located in the `Final/` directory:
+### Final Figures — one canonical script (or small set) per figure, in `Final/FigN/`
 
-- **Figure 1:** Tectonic Context and Data Overview
-  - `Final/Figure1_Rev2.m`
-  - `Final/Figure1B_Scatter_Waveforms.m`
-- **Figure 2:** Feature Statistics and Lithospheric Distributions
-  - `Final/Figure2_FeatureStatsFinal.m`
-  - `Final/Revision1_Summary_Scatter_LAB.m`
-- **Figure 3:** Tectonic Regionalization and Residual Statistics
-  - `Final/Figure3_ClustersTectonics.m` (Original script with the full geological categorization)
-  - `Draft/Fig3/Figure3_ClustersTectonics_Reduced.m` (Revised script: reduces categories to 4 by merging Oceanic into Craton Margins and Old Oceanic into Young Continents, with an optimized layout featuring a colorized horizontal symbol legend nested below the maps)
-  - `Draft/Fig3/Figure3_ClustersTectonicsCratons_Reduced.m` (Final polished script: incorporates the Bedle Craton boundaries from KML files, plotting them as bold green outlines above the scatter symbols and inside the global inset map).
-- **Supplemental Figures:**
-  - `Final/FigSup1_SeisVsThermal_Full.m`
+As of the 2026-09-24 cleanup, every main-text figure has exactly one canonical location — see
+**`Final/README.md`** for the authoritative, detailed list (dependencies, output filenames, and
+for Figure 3 specifically, the composite pipeline order — it's built from two pieces plus a
+compositing step, which isn't obvious from the file names alone). Summary:
+
+- **Figure 1:** `Final/Fig1/Figure1_CRISP_Denoising.m`
+- **Figure 2:** `Final/Fig2/Figure2_FeatureStatsFinal.m`
+- **Figure 3:** `Final/Fig3/Figure3_Map.m` + `Figure3_WaveformsKDE.m` + `Figure3_Composite.m` (run in that order)
+- **Figure 4:** `Final/Fig4/Figure4_TectonicValidation.m`
+- **Figure 5:** No script — illustrator-produced, see `Revisions/tracked_revision/Figures/Revision3_Final_Figure5.png`
 
 **To run a script:**
 1. Open MATLAB.
-2. Navigate your Current Folder to the script's directory (e.g., `cd PlotScripts/Draft/Fig2`).
-3. Run the script (e.g., type `Figure2c_MapsLocs` in the command window).
-4. The generated figures will be saved to the `Figures/` directory.
+2. Navigate your Current Folder to the script's own directory (e.g., `cd PlotScripts/Final/Fig3`).
+3. Run it by name (e.g., type `Figure3_Map` in the command window).
+4. The generated figure is saved to `Figures/Global_Study/`.
+
+### `Draft/` and `Archive/`
+
+`Draft/` holds exploratory/working scripts for figures beyond the main four above (SI figures,
+in-progress work) — nothing in here is guaranteed current. `Archive/` holds scripts and files
+confirmed superseded during the 2026-09-24 cleanup (moved via `git mv`, not deleted, so history
+is intact) — filenames there are suffixed with why each was retired (`_STALE`, `_BROKEN`,
+`_WrongContent`, `_no_cratons`, etc.).
+
+## Figure-numbering trap
+
+The manuscript was restructured mid-review (current Figure 3 was the old Figure 1; current
+Figure 4 was the old Figure 3). Some filenames still in `Draft/` reflect the *old* numbering —
+if you're ever tempted to treat a `Draft/` script named `Figure1*` as feeding current Figure 1,
+check `Final/README.md`'s figure-numbering note first.
 
 ## Contributing
 
@@ -82,3 +98,7 @@ When modifying or adding new scripts:
 - **Always use relative paths** pointing to the `Data/` directory (`../../Data/...`).
 - **Never commit massive files** (>50MB). Add them to `.gitignore` and host them externally.
 - **Dependencies:** If your script requires a new toolbox or library, place it in `Data/` and update this README.
+- **If you promote a `Draft/` script to canonical status**, move it into `Final/FigN/` (not just
+  copy it — use `git mv` so history follows), archive whatever it superseded, and update
+  `Final/README.md`. The 2026-09-24 cleanup exists specifically because this wasn't done
+  consistently before, and it cost real time to untangle.

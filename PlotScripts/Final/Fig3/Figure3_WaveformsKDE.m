@@ -1,10 +1,28 @@
-function Figure1B_Scatter_Waveforms()
+function Figure3_WaveformsKDE()
     clear; close all; clc;
     
     % Add paths
     addpath('../../Data/m_map');
     addpath('../../Data/landmask');
     addpath('../../Data/slanCM');
+    
+    %% 0. Global Parameters for Easy Tweaking
+    % These original values (20/30/20 on a 1400px canvas) are proportionally
+    % consistent with Figure 1 CRISP-RF's chosen scale (35/25/35 on 1900px) --
+    % verified by ratio, not with the stale small fonts in Final/Figure2 and
+    % Final/Figure3_ClustersTectonics, which were never actually updated.
+    CFG.font_tick = 20;
+    CFG.font_label = 30;
+    CFG.font_title = 20;
+    
+    LABEL_C1 = '\color{red}C1 (Melt)';
+    LABEL_C2 = '\color{blue}C2 (Rheological)';
+    LABEL_C3 = '\color{green}C3 (Metasomatic)';
+    LABEL_C4 = '\color{black}C4 (Deep)';
+    
+    LABEL_X_SCATTER = ''; % Removed CAM-22 LAB Depth (km) per user request
+    LABEL_X_WAVE = 'Depth (km)';
+    LABEL_Y_WAVE = 'Station Index';
     
     %% 1. Load Seismic Data
     disp('Loading Seismic Data...');
@@ -88,18 +106,20 @@ function Figure1B_Scatter_Waveforms()
     w_marg = 0.02;
     
     % Positions
-    py_top = 0.52;
-    py_bot = 0.15;
+    py_top = 0.55;
+    py_bot = 0.12;
     
     % A. Top Row (C2/C3 waveforms and scatter on the right)
     disp('Plotting Top Row Waveforms and Scatter...');
     
-    % Waveforms (C2 and C3): show y-tick labels, hide y-label for both C2 and C3
+    % Waveforms (C2 and C3): show x-tick labels for C2
     ax_c2 = subplot('Position', [0.08, py_top, 0.33, h_main]);
-    plotwaveforms(ax_c2, '../../Data/MachineLearningData/RFs/sequenced_cluster3.mat', c_blue, 'C2 (Rheological)', true, true, false);
+    plotwaveforms(ax_c2, '../../Data/MachineLearningData/RFs/sequenced_cluster3.mat', c_blue, LABEL_C2, true, true, false, CFG, LABEL_X_WAVE, LABEL_Y_WAVE);
+    annotation(f, 'textbox', [0.08, py_top+0.01, 0.05, 0.05], 'String', '(b)', 'EdgeColor', 'none', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
     
     ax_c3 = subplot('Position', [0.43, py_top, 0.33, h_main]);
-    plotwaveforms(ax_c3, '../../Data/MachineLearningData/RFs/sequenced_cluster0.mat', c_green, 'C3 (Metasomatic)', false, true, false);
+    plotwaveforms(ax_c3, '../../Data/MachineLearningData/RFs/sequenced_cluster0.mat', c_green, LABEL_C3, false, true, false, CFG, LABEL_X_WAVE, LABEL_Y_WAVE);
+    annotation(f, 'textbox', [0.43, py_top+0.01, 0.05, 0.05], 'String', '(c)', 'EdgeColor', 'none', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
     
     % Scatter on the right (C2/C3) - histogram on top, reduced horizontal space (px = 0.77), show x-tick labels
     px_top_s = 0.77;
@@ -107,17 +127,20 @@ function Figure1B_Scatter_Waveforms()
     top_ax_top  = axes('Position', [px_top_s, py_top + h_main + 0.01, w_main, h_marg]);
     right_ax_top = axes('Position', [px_top_s + w_main + 0.005, py_top, w_marg, h_main]);
     
-    plotjointkde(main_ax_top, top_ax_top, right_ax_top, st_cam_lab, seismic_depth, c_indices, c_colors, [2, 3], true, true, true);
+    plotjointkde(main_ax_top, top_ax_top, right_ax_top, st_cam_lab, seismic_depth, c_indices, c_colors, [2, 3], true, true, true, CFG, LABEL_X_SCATTER);
+    annotation(f, 'textbox', [px_top_s, py_top+0.01, 0.05, 0.05], 'String', '(f)', 'EdgeColor', 'none', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
     
     % B. Bottom Row (C1/C4 waveforms and scatter on the right)
     disp('Plotting Bottom Row Waveforms and Scatter...');
     
     % Waveforms (C1 and C4): show y-tick labels and y-label for both C1 and C4
     ax_c1 = subplot('Position', [0.08, py_bot, 0.33, h_main]);
-    plotwaveforms(ax_c1, '../../Data/MachineLearningData/RFs/sequenced_cluster2.mat', c_red, 'C1 (Melt)', true, true, true);
+    plotwaveforms(ax_c1, '../../Data/MachineLearningData/RFs/sequenced_cluster2.mat', c_red, LABEL_C1, true, true, true, CFG, LABEL_X_WAVE, LABEL_Y_WAVE);
+    annotation(f, 'textbox', [0.08, py_bot+0.01, 0.05, 0.05], 'String', '(d)', 'EdgeColor', 'none', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
     
     ax_c4 = subplot('Position', [0.43, py_bot, 0.33, h_main]);
-    plotwaveforms(ax_c4, '../../Data/MachineLearningData/RFs/sequenced_cluster1.mat', c_black, 'C4 (Deep Structural)', false, true, true);
+    plotwaveforms(ax_c4, '../../Data/MachineLearningData/RFs/sequenced_cluster1.mat', c_black, LABEL_C4, false, true, true, CFG, LABEL_X_WAVE, LABEL_Y_WAVE);
+    annotation(f, 'textbox', [0.43, py_bot+0.01, 0.05, 0.05], 'String', '(e)', 'EdgeColor', 'none', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
     
     % Scatter on the right (C1/C4) - histogram on bottom, remove x-label, reduced horizontal space (px = 0.77), remove x-tick labels
     px_bot_s = 0.77;
@@ -125,14 +148,17 @@ function Figure1B_Scatter_Waveforms()
     top_ax_bot  = axes('Position', [px_bot_s, py_bot - h_marg - 0.01, w_main, h_marg]);
     right_ax_bot = axes('Position', [px_bot_s + w_main + 0.005, py_bot, w_marg, h_main]);
     
-    plotjointkde(main_ax_bot, top_ax_bot, right_ax_bot, st_cam_lab, seismic_depth, c_indices, c_colors, [1, 4], false, false, false);
+    plotjointkde(main_ax_bot, top_ax_bot, right_ax_bot, st_cam_lab, seismic_depth, c_indices, c_colors, [1, 4], false, false, false, CFG, LABEL_X_SCATTER);
+    annotation(f, 'textbox', [px_bot_s, py_bot+0.01, 0.05, 0.05], 'String', '(g)', 'EdgeColor', 'none', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
+    
+    title(main_ax_bot, 'Thermal LAB (km)', 'FontSize', CFG.font_title, 'FontWeight', 'bold');
     
     % Save Figure
-    exportgraphics(f, '../../Figures/Global_Study/Figure1B_Scatter_Waveforms.png', 'Resolution', 300);
-    disp('Figure saved as Figures/Global_Study/Figure1B_Scatter_Waveforms.png');
+    exportgraphics(f, '../../Figures/Global_Study/Figure3_WaveformsKDE.png', 'Resolution', 300);
+    disp('Figure saved as Figures/Global_Study/Figure3_WaveformsKDE.png');
 end
 
-function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, c_indices, c_colors, cluster_ids, show_xlabel, hist_on_top, show_xticklabels)
+function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, c_indices, c_colors, cluster_ids, show_xlabel, hist_on_top, show_xticklabels, CFG, LABEL_X_SCATTER)
     % Plot 1:1 reference line on main axis
     hold(main_ax, 'on');
     plot(main_ax, [10 300], [10 300], 'r--', 'LineWidth', 1.5);
@@ -184,7 +210,7 @@ function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, c_indices, c_colo
     grid(main_ax, 'on');
     
     if show_xlabel
-        xlabel(main_ax, 'CAM-22 LAB Depth (km)', 'FontSize', 8, 'FontWeight', 'bold');
+        xlabel(main_ax, LABEL_X_SCATTER, 'FontSize', CFG.font_label, 'FontWeight', 'bold');
     else
         xlabel(main_ax, '');
     end
@@ -193,6 +219,9 @@ function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, c_indices, c_colo
     % Flip Y-axis so depth increases downward (matching the waveforms)
     set(main_ax, 'YDir', 'reverse');
     
+    % Force X-axis to the bottom explicitly
+    set(main_ax, 'XAxisLocation', 'bottom');
+    
     % Hide Y-tick labels on the rightmost panels (scatter plots)
     set(main_ax, 'YTickLabel', []);
     
@@ -200,7 +229,7 @@ function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, c_indices, c_colo
         set(main_ax, 'XTickLabel', []);
     end
     
-    set(main_ax, 'linewidth', 1.5, 'fontsize', 8);
+    set(main_ax, 'linewidth', 1.5, 'fontsize', CFG.font_tick);
     
     % Style top/bottom marginal axis
     xlim(top_ax, [10 300]);
@@ -223,7 +252,7 @@ function plotjointkde(main_ax, top_ax, right_ax, x_all, y_all, c_indices, c_colo
     axis(right_ax, 'off');
 end
 
-function plotwaveforms(ax_handle, RF_file_path, color_theme, title_str, show_depth_labels, show_yticklabels, show_ylabel)
+function plotwaveforms(ax_handle, RF_file_path, color_theme, title_str, show_depth_labels, show_yticklabels, show_ylabel, CFG, LABEL_X_WAVE, LABEL_Y_WAVE)
     axes(ax_handle);
     hold on;
     
@@ -250,7 +279,7 @@ function plotwaveforms(ax_handle, RF_file_path, color_theme, title_str, show_dep
     xticklabels([60, 100:50:300]);
     
     if show_ylabel
-        ylabel('Station Index', 'FontSize', 8, 'FontWeight', 'bold');
+        ylabel(LABEL_Y_WAVE, 'FontSize', CFG.font_label, 'FontWeight', 'bold');
     else
         ylabel('');
     end
@@ -262,16 +291,16 @@ function plotwaveforms(ax_handle, RF_file_path, color_theme, title_str, show_dep
     end
     
     if show_depth_labels
-        xlabel('Depth (km)', 'FontSize', 8, 'FontWeight', 'bold');
+        xlabel(LABEL_X_WAVE, 'FontSize', CFG.font_label, 'FontWeight', 'bold');
     else
         xlabel('');
         set(ax_handle, 'XTickLabel', []);
     end
     
-    title(title_str, 'FontSize', 10, 'FontWeight', 'bold');
+    title(title_str, 'FontSize', CFG.font_title, 'FontWeight', 'bold', 'Interpreter', 'tex');
     box on;
     
-    set(gca, 'linewidth', 2, 'fontsize', 8, 'XMinorTick', 'on', 'YMinorTick', 'on', 'YAxisLocation', 'right', 'XColor', color_theme, 'YColor', color_theme);
+    set(gca, 'linewidth', 2, 'fontsize', CFG.font_tick, 'XMinorTick', 'on', 'YMinorTick', 'on', 'YAxisLocation', 'right', 'XColor', color_theme, 'YColor', color_theme);
     
     ax = gca;
     ax.XAxis.TickLabelColor = [0 0 0]; 

@@ -96,7 +96,7 @@ function Figure1_CRISP_Denoising()
     drawnow;
     out_dir = '../../Figures/Global_Study';
     if ~exist(out_dir, 'dir'); mkdir(out_dir); end
-    out_file = fullfile(out_dir, 'Figure1_CRISP_Denoising_Draft.png');
+    out_file = fullfile(out_dir, 'Figure1_CRISP_Denoising.png');
     exportgraphics(f, out_file, 'Resolution', 300);
     fprintf('Saved %s\n', out_file);
 end

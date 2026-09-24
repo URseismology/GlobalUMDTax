@@ -1,4 +1,4 @@
-function Figure3_ClustersTectonics_Reduced()
+function Figure4_TectonicValidation()
     clear; close all; clc;
 
     addpath('../../Data/m_map');
@@ -66,7 +66,7 @@ function Figure3_ClustersTectonics_Reduced()
     PAPER_TO_ML = [2, 3, 0, 1]; 
     PAPER_COLORS = {[0.8, 0.1, 0.1], [0.1, 0.3, 0.8], [0.1, 0.6, 0.3], [0.0, 0.0, 0.0]};
     PAPER_SHAPES = {'o', '^', 's', 'd'}; % Match Fig1a shapes explicitly
-    C_NAMES = {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Structural)'};
+    C_NAMES = {'C1 (Melt)', 'C2 (Rheological)', 'C3 (Metasomatic)', 'C4 (Deep)'};
     
     % --- CONFIGURATION: Fonts, Sizes, and Labels ---
     CFG.font_cb_tick = 20;
@@ -117,7 +117,8 @@ function Figure3_ClustersTectonics_Reduced()
     if height(df_c4) > 0
         m_scatter(df_c4.Longitude, df_c4.Latitude, psz*0.2, 'd', 'MarkerFaceColor', 'w', 'MarkerEdgeColor', 'k', 'LineWidth', 1.0); % Reduced symbol size
     end
-    plot_bedle_cratons(1.0);
+    plot_bedle_cratons(0.5);
+    plot_pearson_cratons(0.5);
     colormap(ax_inset, cmapTec); caxis(ax_inset, [1 5]);
     m_grid('linestyle', 'none', 'ytick', [], 'xtick', [], 'box', 'on', 'backcolor', 'w');
     
@@ -267,8 +268,10 @@ function Figure3_ClustersTectonics_Reduced()
         box(ax_box, 'on');
     end
     
-    out_dir = '../../Figures/Global_Study'; if ~isfolder(out_dir), mkdir(out_dir); end
-    exportgraphics(f, fullfile(out_dir, 'Figure3_ClustersTectonicsCratons_Reduced.png'), 'Resolution', 300);
+    out_dir = '../../Figures/Global_Study';
+    if ~isfolder(out_dir), mkdir(out_dir); end
+    exportgraphics(f, fullfile(out_dir, 'Figure4_TectonicValidation.png'), 'Resolution', 300);
+    disp('Saved Figure4_TectonicValidation.png');
 end
 
 function draw_map_panel(ax, xq, yq, TecRegMap, cmapTec, S1, df, PAPER_TO_ML, PAPER_COLORS, PAPER_SHAPES, psz, lon_bounds)
@@ -301,7 +304,8 @@ function draw_map_panel(ax, xq, yq, TecRegMap, cmapTec, S1, df, PAPER_TO_ML, PAP
                 'MarkerFaceColor', 'w', 'MarkerEdgeColor', PAPER_COLORS{p}, 'LineWidth', 1.5); 
         end
     end
-    plot_bedle_cratons(2.0);
+    plot_bedle_cratons(1.0);
+    plot_pearson_cratons(2.0);
     
     colormap(ax, cmapTec);
     caxis(ax, [1 5]);
@@ -355,6 +359,30 @@ end
 function plot_bedle_cratons(lw)
     if nargin < 1, lw = 2.0; end
     kml_dir = '../../Data/GeologicalData/BedleCratons';
+    kml_files = dir(fullfile(kml_dir, '*.kml'));
+    
+    for i = 1:length(kml_files)
+        filename = fullfile(kml_dir, kml_files(i).name);
+        str = fileread(filename);
+        idx1 = strfind(str, '<coordinates>');
+        idx2 = strfind(str, '</coordinates>');
+        
+        if ~isempty(idx1) && ~isempty(idx2)
+            coord_str = str(idx1(1)+13:idx2(1)-1);
+            C = textscan(coord_str, '%f,%f,%f');
+            lon = C{1};
+            lat = C{2};
+            
+            if length(lon) > 1
+                m_line(lon, lat, 'color', [0 0.8 0], 'linewidth', lw);
+            end
+        end
+    end
+end
+
+function plot_pearson_cratons(lw)
+    if nargin < 1, lw = 2.0; end
+    kml_dir = '../../Draft/PearsonCratons/digitization'; % data lives under Draft/, not duplicated here
     kml_files = dir(fullfile(kml_dir, '*.kml'));
     
     for i = 1:length(kml_files)
