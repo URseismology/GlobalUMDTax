@@ -1,71 +1,29 @@
-# Figure 1 Draft Scripts Directory
+# Figure 1 Draft Scripts Directory — historical name, contents have moved
 
-This directory contains the prototype, production, and legacy scripts targeted for the development of **Figure 1** (Global/Regional Discontinuity and Age-Craton Taxonomy Maps).
+**2026-09-24 update:** the scripts this README used to describe (`Figure1a_MapLocs.m`,
+`Figure1_Amap_revised.m`/`_NA.m`, `Figure1B_Scatter_Waveforms.m`) were either archived as
+superseded or promoted to their canonical home. See `PlotScripts/Final/README.md` for where the
+actual current Figure 1 and Figure 3 scripts live now (this folder's name is a leftover from the
+pre-reorder figure numbering — nothing canonical for the *current* Figure 1 is in here).
 
----
+## What's actually still in this folder
 
-## Script Index
+Not re-verified as part of the 2026-09-24 cleanup — treat descriptions below as best-effort,
+not confirmed accurate:
 
-### 1. `Figure1a_MapLocs.m` (Final Master Script)
-*   **Purpose**: Renders the finalized, polished global map and US-focused regional zoom map of thermal fields and station clusters.
-*   **Description**: Plots the 100km CAM22 absolute temperature field with a custom thermal LAB transition colormap, transparent map faces, and properly sized cluster symbols (C1-C3). Outputs two figures: a global overview with an inset (Pacific centered), and a zoomed-in detail map of the US lower-48 with explicit point bounding.
-*   **Inputs**:
-    *   `Data/Velocity_Models/CAM2022-vs-tmp.r0.0.nc` (CAM22 Temperature)
-    *   `Data/GlobalVs_Models/votemap_100_km.mat` (Tomography Voting Map)
-    *   `Data/MachineLearningData/rf_global_clustering/results/clustered_data_Neg_CAM22.csv`
-    *   `Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp`
-*   **Outputs**:
-    *   `Figures/Global_Study/Figure1a_MapLocs.png` (Global view)
-    *   `Figures/Global_Study/Figure1a_US_MapLocs.png` (US Zoom view)
+- `Figure1_Amap_revised.m`, `Figure1_Amap_revised_NA.m` — exploratory Age-Craton map variants
+  (global and US-zoom). Not the canonical Figure 3 map (that's `Final/Fig3/Figure3_Map.m`).
+- `Figure4_SlabProximityAnalysis.m`, `Figure5A_PaleoCoastlines.m`, `Figure5B_ModernCoastlines.m` —
+  appear related to Supporting Information content (Mesozoic subduction correlation, moved to SI
+  per the manuscript's restructuring). Not touched by today's main-figure cleanup.
+- `Revision1_Figure1.m`, `Revision1_Summary_Scatter_LAB.m`, `PlotCratonsTestPub.m` — older
+  exploratory scripts. Note there's *also* a same-named `Revision1_Summary_Scatter_LAB.m` in
+  `Final/` — that duplicate-naming problem hasn't been investigated or resolved (out of scope
+  for the four-figure cleanup); don't assume either copy is authoritative without checking.
+- `Supporting/` — `FigureS1a/b/c_*.m` scripts, apparently SI map/statistics variants.
+- `build_fig1.py`, `fix_layout.py`, `generate_combined_fig.py`, `plot_geojson_coords.m`,
+  `test_geojson.m` — utility/exploration scripts, purpose not re-verified.
 
-### 2. `Figure1_Amap_revised.m`
-*   **Purpose**: Renders the revised 2-panel global Age-Craton map.
-*   **Description**: Discretizes Artemieva's global crustal age grid into three zones (Phanerozoic, Proterozoic, Archean). 
-    *   **Panel A**: Overlays C1 (Melt: red circle), C2 (Rheological: blue circle+dot), and C3 (Metasomatic: green circle+cross) stations with transparent marker faces.
-    *   **Panel B**: Overlays C4 (Deep Structural: black circle+star) stations.
-*   **Inputs**:
-    *   `Data/MachineLearningData/IrinaThermal/global-ages-0705-1x1.nc`
-    *   `Data/MachineLearningData/rf_global_clustering/results/clustered_data_Neg_CAM22.csv`
-    *   `Data/MachineLearningData/rf_global_clustering/data/Data_Global_R1Meta.csv`
-    *   `Data/global_tectonics/plates&provinces/shp/plate_boundaries.shp`
-*   **Outputs**:
-    *   `Figures/Global_Study/Figure1_Amap_revised_v1.png` and `v2.png`
-
-### 3. `Figure1_Amap_revised_NA.m`
-*   **Purpose**: Renders a zoomed-in, regional version of the 2-panel Age-Craton map for the United States lower-48 states.
-
-### 4. `Figure1B_Scatter_Waveforms.m`
-*   **Purpose**: Renders the complete, multi-component waveforms and scatter comparison layout for Figure 1B.
-*   **Outputs**:
-    *   `Figures/Global_Study/Figure1B_Scatter_Waveforms.png`
-
----
-
-## Supporting Maps (`Supporting/` Directory)
-
-The `Supporting/` directory contains a collection of scripts moved from previous draft phases (`Fig2`). These scripts generate supplementary global maps and statistical comparisons that complement the main Figure 1 outputs.
-
-### `FigureS1a_Maps.m`
-*   **Purpose**: Plots CAM22 Temperature, DBRD-NATURE2020 Melt Content, and Tomography Consensus side-by-side.
-*   **Output**: `Figures/Global_Study/FigureS1a_Maps.png`
-
-### `FigureS1b_Maps_Stats.m`
-*   **Purpose**: Combines global maps (Temperature, Melt, Votemap) with multi-model empirical cumulative distribution function (eCDF) statistical plots.
-*   **Output**: `Figures/Global_Study/FigureS1b_Maps_Stats.png`
-
-### `FigureS1c_MapsLocs.m`
-*   **Purpose**: Combines global maps with explicitly overlaid cluster station locations (C1-C4) and correlation scatter plots. Generated automatically via `generate_figS1c.py`.
-*   **Output**: `Figures/Global_Study/FigureS1c_MapsLocs.png`
-
-### `FigureS1c_StatsOnly.m`
-*   **Purpose**: Generates solely the statistical correlation scatter plots without the heavy map renders.
-*   **Output**: `Figures/Global_Study/FigureS1c_StatsOnly.png`
-
-### 5. `Figure4_DeepStructureCratonLAB.m`
-*   **Purpose**: Renders the 3-panel Mesozoic paleo-coastline maps and inset statistical bar chart linking C4 to ancient subduction.
-*   **Description**: Pulls paleocoastlines dynamically via GPlates API for 200, 150, and 90 Ma. Overlays the subducted slabs for the three respective Mesozoic phases (260-170 Ma, 160-120 Ma, 110-50 Ma) and spatially bins C4 stations within 1 degree of proximity. Embeds an inset bar chart proving the spatial scaling correlation continent-by-continent.
-*   **Inputs**:
-    *   `Data/MachineLearningData/rf_global_clustering/results/clustered_data_Neg_CAM22.csv`
-    *   `VedSlabContours/SlabHistory.txt`
-*   **Outputs**:
-    *   `Figures/Global_Study/Figure4_DeepStructureCratonLAB.png`
+If you need to work with any of these, verify what they actually produce against the current
+manuscript/SI before trusting old descriptions (including this one) — that's the lesson of the
+2026-09-24 cleanup.

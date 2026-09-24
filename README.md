@@ -1,11 +1,12 @@
-# Global Taxonomy Addresses the Paradox of Strength and History of Ancient Continents
+# The Mosaic Architecture of Continental Lithosphere
 
-*Tolulope Olugboji¹²\**, *Jean-Joel Legre¹†*, *Steve Carr¹†*, *Zachary Sudholz³⁴*
+*Tolulope Olugboji¹²\**, *Jean-Joel Legre¹†*, *Steve Carr¹†*, *Zachary Sudholz³⁴*, *Lauren Waszek⁵*
 
 ¹ Department of Earth and Environmental Sciences, University of Rochester, USA  
 ² Department of Electrical and Computer Engineering, University of Rochester, USA  
 ³ Bullard Laboratories, Department of Earth Sciences, University of Cambridge, Cambridge, UK  
 ⁴ Research School of Earth Sciences, The Australian National University, Canberra ACT, Australia  
+⁵ Department of Physics, James Cook University, Townsville QLD, Australia  
 *\* Corresponding author: tolulope.olugboji@rochester.edu*  
 *† These authors contributed equally to this work.*
 

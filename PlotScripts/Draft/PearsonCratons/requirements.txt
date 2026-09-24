@@ -1,0 +1,6 @@
+numpy>=2.0
+matplotlib>=3.9
+cartopy>=0.24
+shapely>=2.0
+opencv-python>=4.10
+ultralytics>=8.4
